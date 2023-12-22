@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>News Portal</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #fff;
+            background-image: url('https://media.discordapp.net/attachments/1101785167233826846/1187776448002527263/News_background.png?ex=65981e05&is=6585a905&hm=a346cd1d4f22fb099a68b78311386a7bf781275867200f07775d9eff340f1054&=&format=webp&quality=lossless&width=1193&height=671');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .filter-search-container {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .filter-select,
+        .search-input {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        .filter-select {
+            flex-grow: 1;
+            background-color: #f2f2f2;
+            color: #333;
+            margin: 10px 10px;
+            border-radius: 20px;
+            width: 30px;
+        }
+
+        .search-input {
+            flex-grow: 1;
+            background-color: #f2f2f2;
+            color: #333;
+            margin: 0 10px;
+            border-radius: 20px;
+            width: 300px;
+        }
+
+        .filter-select:focus,
+        .search-input:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        .filter-select option {
+            background-color: #fff;
+            color: #333;
+        }
+
+        .filter-select:hover,
+        .filter-select:active,
+        .search-input:hover,
+        .search-input:active {
+            border-color: #007bff;
+        }
+
+        .filter-select,
+        .search-input,
+        .read-more {
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .read-more:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .filter-icon {
+            font-size: 18px;
+            margin-right: 5px;
+        }
+
+        main {
+            flex: 1;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        article {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            color: #333;
+            margin: 10px;
+        }
+
+        p {
+            color: #555;
+            margin: 0 10px 10px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-bottom: 1px solid #ccc;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        img:hover {
+            transform: scale(1.05);
+        }
+
+        .read-more {
+            display: block;
+            padding: 10px;
+            background-color: #121f31;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .read-more:hover {
+            background-color: #264068;
+        }
+
+        .pagination {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .pagination a {
+            display: inline-block;
+            padding: 8px 16px;
+            text-decoration: none;
+            background-color: #1c536d;
+            color: white;
+            border-radius: 5px;
+            margin-right: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .pagination a:hover {
+            background-color: #12375a;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                background-color: #f8f8f8;
+            }
+
+            main {
+                grid-template-columns: 1fr;
+            }
+
+            .navbar-nav {
+                text-align: center;
+                margin-top: 10px;
+            }
+
+            .navbar-nav a {
+                display: block;
+                padding: 10px;
+                color: #fff;
+            }
+
+            .navbar-nav a:hover {
+                background-color: #4430a7;
+            }
+        }
+
+        footer {
+            background-color: #b3b8ba;
+    color: #333; /* Darker text color for better visibility */
+    padding: 20px 0;
+    text-align: center;
+    font-family: 'Arial', sans-serif; /* Use a formal font */
+    margin-top: 20px;
+    border-top: solid black 3px;
+        }
+
+        .footer-contact {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .footer-contact-item {
+            margin-right: 20px;
+        }
+
+        .footer-contact-item i {
+            font-size: 24px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .footer-links a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a class="navbar-brand" href="#">
+            <img src="https://media.discordapp.net/attachments/1141088719261155469/1187452917335208026/EMBLEM.png?ex=6596f0b5&is=65847bb5&hm=0e14c7d2d379ebf2db26778b3c6dd61f8e577f97cc2a4882535f0215356d56ab&=&format=webp&quality=lossless&width=205&height=205"
+                alt="Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="About-us.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">History</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Our Ministries</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="news.html">News</a>
+                </li>
+            </ul>
+        </div>
+        <!-- Add the following inside your navbar right before the closing </nav> tag -->
+        <div class="navbar-text ml-auto d-none d-md-block">
+            <p class="navbar-title">Elementsian Government</p>
+        </div>
+
+    </nav>
+
+    <div class="filter-search-container">
+        <i class="fas fa-filter filter-icon"></i>
+        <label for="filter" style="display: none;">Filter:</label>
+        <select id="filter" class="filter-select">
+            <option value="all">All</option>
+            <option value="politics">Politics</option>
+            <option value="technology">Technology</option>
+            <!-- Add more categories as needed -->
+        </select>
+
+        <label for="search" style="display: none;">Search:</label>
+        <input type="text" id="search" class="search-input" placeholder="Enter keywords...">
+    </div>
+
+
+    <main>
+        <main>
+            <article>
+                <a href="#">
+                    <img src="https://media.discordapp.net/attachments/1101785167233826846/1187780949124075571/OIP.png?ex=65982236&is=6585ad36&hm=398261bbdec4b176aa95ff49d933e8baf34a30fcc24a69784843e884490f5e7c&=&format=webp&quality=lossless" alt="News Image">
+                </a>
+                <h2>New Eco-Friendly Park Opens in Elementsia</h2>
+                <p>
+                    Elementsia celebrates the inauguration of a state-of-the-art eco-friendly park, showcasing sustainable design and green initiatives. The park aims to provide a serene and environmentally conscious space for the community.
+                </p>
+                <a href="#" class="read-more">Read more</a>
+            </article>
+        
+            <article>
+                <a href="#">
+                    <img src="https://media.discordapp.net/attachments/1101785167233826846/1187781374996922379/R.png?ex=6598229b&is=6585ad9b&hm=0d0bc55a90bab509213610c1e0d8aecfbc5d2c271f675d2726c13fa1efd0936a&=&format=webp&quality=lossless&width=1007&height=671" alt="News Image">
+                </a>
+                <h2>Elementsia Hosts International Arts Festival</h2>
+                <p>
+                    The vibrant streets of Elementsia come alive as artists from around the world gather for an international arts festival. Residents and visitors alike immerse themselves in a diverse showcase of creativity and cultural exchange.
+                </p>
+                <a href="#" class="read-more">Read more</a>
+            </article>
+        
+            <article>
+                <a href="#">
+                    <img src="https://media.discordapp.net/attachments/1101785167233826846/1187781452440555540/90.png?ex=659822ae&is=6585adae&hm=a26c59bb0fb44fee9ef20db4e85ef6a0adcf3e37b503f3db4af29ad62e8129b0&=&format=webp&quality=lossless&width=1192&height=671" alt="News Image">
+                </a>
+                <h2>Major Technological Hub Launches in Elementsia</h2>
+                <p>
+                    Elementsia positions itself at the forefront of technology with the grand opening of a major technological hub. The facility aims to foster innovation, research, and collaboration, solidifying the nation's status as a tech leader.
+                </p>
+                <a href="#" class="read-more">Read more</a>
+            </article>
+        
+            <!-- Repeat the structure for the remaining articles with appropriate content -->
+        
+            <article>
+                <a href="#">
+                    <img src="https://media.discordapp.net/attachments/1101785167233826846/1187781935964094587/R.png?ex=65982321&is=6585ae21&hm=e27eca21ce8c94b97ce96819d35526af08251abe18759318dabd352502c97000&=&format=webp&quality=lossless" alt="News Image">
+                </a>
+                <h2>Elementsia's Educational Excellence Recognized Globally</h2>
+                <p>
+                    Elementsia's commitment to education receives global acclaim as its institutions earn recognition for excellence. The nation's focus on fostering a world-class learning environment is evident in this prestigious acknowledgment.
+                </p>
+                <a href="#" class="read-more">Read more</a>
+            </article>
+        
+            <article>
+                <a href="#">
+                    <img src="https://media.discordapp.net/attachments/1101785167233826846/1187782054730014771/OIP.png?ex=6598233d&is=6585ae3d&hm=2f660c0e0c7a12082e641bb5b2614fffd96b23ee6c091a07bce071ce800e0e71&=&format=webp&quality=lossless" alt="News Image">
+                </a>
+                <h2>Elementsia Launches Bold Environmental Conservation Initiative</h2>
+                <p>
+                    In a groundbreaking move, Elementsia unveils an ambitious environmental conservation initiative. The program encompasses sustainable practices, wildlife preservation, and community involvement, marking a significant step towards a greener future.
+                </p>
+                <a href="#" class="read-more">Read more</a>
+            </article>
+        
+            <article>
+                <a href="#">
+                    <img src="https://media.discordapp.net/attachments/1101785167233826846/1187782700464095313/R.png?ex=659823d7&is=6585aed7&hm=207febb882e1c63506673d0150135a40a3303e50094a892c4c8f1e51a8b2959b&=&format=webp&quality=lossless&width=1007&height=671" alt="News Image">
+                </a>
+                <h2>Elementsia Celebrates Cultural Diversity Week</h2>
+                <p>
+                    The rich cultural tapestry of Elementsia takes center stage during Cultural Diversity Week. Festivities include traditional performances, culinary delights, and events that highlight the nation's multicultural identity.
+                </p>
+                <a href="#" class="read-more">Read more</a>
+            </article>
+        
+            <article>
+                <a href="#">
+                    <img src="https://media.discordapp.net/attachments/1101785167233826846/1187782850146214009/OIP.png?ex=659823fb&is=6585aefb&hm=3b139a52b0e1adb152752f826d0aeee89e0b5637ec3e02377047148c1c791b09&=&format=webp&quality=lossless" alt="News Image">
+                </a>
+                <h2>Elementsia Achieves Record-Breaking Tourism Numbers</h2>
+                <p>
+                    Elementsia's picturesque landscapes and vibrant culture attract a record number of tourists. The tourism sector thrives, contributing to the nation's economic growth and fostering global appreciation for Elementsian heritage.
+                </p>
+                <a href="#" class="read-more">Read more</a>
+            </article>
+        
+            <article>
+                <a href="#">
+                    <img src="https://media.discordapp.net/attachments/1101785167233826846/1187783039892328448/cons24_1480x800.png?ex=65982428&is=6585af28&hm=d6159c77d0ae7dc3430f5e330114350ecb9109b47607d061138d16c6f7a81b14&=&format=webp&quality=lossless&width=1242&height=671" alt="News Image">
+                </a>
+                <h2>New Infrastructure Projects Transform Elementsia's Skyline</h2>
+                <p>
+                    Elementsia undergoes a transformative phase with the launch of visionary infrastructure projects. The skyline evolves as modern architecture and sustainable urban development initiatives reshape the nation's future landscape.
+                </p>
+                <a href="#" class="read-more">Read more</a>
+            </article>
+        </main>
+        
+        <!-- Add more articles as needed -->
+
+    </main>
+
+    <div class="pagination">
+        <a href="#">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <!-- Add more pagination links as needed -->
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-contact">
+                <div class="footer-contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <p>Email: <a href="mailto:contact@elementsia.gov">contact@elementsia.gov</a></p>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fab fa-twitter"></i>
+                    <p>Twitter: <a href="https://twitter.com/ElementsiaGov">Follow us on Twitter</a></p>
+                </div>
+            </div>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Use</a>
+                <a href="#">Accessibility</a>
+            </div>
+            <p>&copy; Elementsian Government 2024. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Your existing JavaScript code remains unchanged
+    </script>
+</body>
+
+</html>

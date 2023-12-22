@@ -1,0 +1,158 @@
+body {
+    padding-top: 56px;
+    background-color: rgba(36, 86, 88, 0.278); /* Light Green */
+    color: #fff; /* White text for better contrast */
+  }
+  
+  .navbar-brand img {
+    max-height: 40px;
+  }
+  
+  .navbar-toggler-icon {
+    background-color: #fff;
+  }
+  
+  .navbar-collapse {
+    text-align: center;
+  }
+  
+  .navbar-nav {
+    margin-top: 10px;
+  }
+  
+  .navbar-nav a {
+    padding: 10px;
+    color: #fff; /* White text for better contrast */
+  }
+  
+  .carousel-section {
+    background-color: #a18f36; /* Dark Green */
+    padding: 50px;
+    text-align: center;
+  }
+  
+  .about-section,
+  .values-section {
+    background-color: #165170; /* Darker Green for variety */
+    padding: 50px;
+    text-align: center;
+  }
+  
+  .welcome-section {
+    background-image: url('https://th.bing.com/th/id/R.d2d3f5a946d8263ef2195b5465ec53ec?rik=STPFJ6F183yGqQ&pid=ImgRaw&r=0'); /* Replace 'path/to/your-image.jpg' with the actual path to your image */
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    padding: 50px;
+    text-align: center;
+  }
+
+  
+  .welcome-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+  }
+  
+  .welcome-section p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+  }
+  
+  .welcome-section a.btn-primary {
+    background-color: #fff;
+    color: #006400; /* Dark Green */
+    border-color: #fff;
+  }
+  
+  .welcome-section a.btn-primary:hover {
+    background-color: #756825; /* Dark Green */
+    color: #fff;
+    border-color: #fff;
+  }
+  .navbar-title {
+    color: #060606; /* White text color for better contrast */
+    font-weight: bold;
+    margin-right: 20px;
+    margin-top: 15px;
+  }
+  @media (max-width: 767px) {
+    /* Hide the title on screens smaller than 768px (md) */
+    .navbar-title {
+      display: none;
+    }
+  }
+  .about-section a.btn-primary {
+    background-color: #fff; /* White background color */
+    color: #006400; /* Dark Green text color */
+    border-color: #fff; /* White border color */
+  }
+  
+  .about-section a.btn-primary:hover {
+    background-color: #b09a30; /* Dark Green on hover */
+    color: #fff; /* White text color on hover */
+    border-color: #fff; /* White border color on hover */
+  }
+  .about-section {
+    background-color: #1a4258; /* Darker Green for variety */
+    padding: 50px;
+    text-align: center;
+    margin-top: 0;
+  }
+  
+  /* Adjust the styling for smaller screens (mobile) */
+  @media (max-width: 767px) {
+    .about-section {
+      padding: 20px; /* Adjust the padding for smaller screens */
+    }
+  }
+  footer {
+    background-color: #b3b8ba;
+    color: #333; /* Darker text color for better visibility */
+    padding: 20px 0;
+    text-align: center;
+    font-family: 'Arial', sans-serif; /* Use a formal font */
+    margin-top: 20px;
+    border-top: solid black 3px;
+}
+
+.footer-contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.footer-contact-item {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+.footer-contact-item i {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.footer-contact-item a {
+    color: #29688a; /* Darker link color for better visibility */
+    text-decoration: none;
+    font-size: 16px; /* Adjust the font size as needed */
+}
+
+.footer-contact-item a:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
+
+.footer-links a {
+    color: #1a4258;
+    text-decoration: none;
+    margin: 0 20px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #555; /* Darker link color on hover */
+}
+
