@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    
     <title>News Portal</title>
     <style>
         body {
@@ -28,12 +28,61 @@
         }
 
         header {
-            background-color: #333;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
+    background-color: #001f3f;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border-bottom: 2px rgb(230, 193, 13) solid;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-family: 'Times New Roman', Times, serif;
+}
 
+header img {
+    max-width: 85px;
+    margin-right: 10px;
+}
+
+nav {
+    background-color: #003366;
+    padding: 8px;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+nav ul {
+    margin-top: 4px;
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav li {
+    margin: 0 15px;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 20px;
+    transition: background-color 0.3s, color 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+nav a i {
+    margin-right: 5px;
+}
+
+nav a:hover {
+    background-color: #fff;
+    color: #001f3f;
+}
         .filter-search-container {
             margin-bottom: 20px;
             display: flex;
@@ -193,100 +242,263 @@
             background-color: #12375a;
         }
 
-        @media (max-width: 600px) {
-            body {
-                background-color: #f8f8f8;
-            }
-
-            main {
-                grid-template-columns: 1fr;
-            }
-
-            .navbar-nav {
-                text-align: center;
-                margin-top: 10px;
-            }
-
-            .navbar-nav a {
-                display: block;
-                padding: 10px;
-                color: #fff;
-            }
-
-            .navbar-nav a:hover {
-                background-color: #4430a7;
-            }
-        }
-
         footer {
-            background-color: #b3b8ba;
-    color: #333; /* Darker text color for better visibility */
-    padding: 20px 0;
-    text-align: center;
-    font-family: 'Arial', sans-serif; /* Use a formal font */
-    margin-top: 20px;
-    border-top: solid black 3px;
+            background-color: #1a4657;
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            margin-top: 10px;
+            border-top: solid black 3px;
         }
-
         .footer-contact {
             display: flex;
             justify-content: center;
             margin-bottom: 20px;
         }
-
-        .footer-contact-item {
-            margin-right: 20px;
-        }
-
+        .footer-contact-item,
+    .footer-links a,
+    footer p {
+        color: white;  /* Set the text color to white for these elements */
+    }
         .footer-contact-item i {
             font-size: 24px;
             margin-bottom: 10px;
             display: block;
         }
-
         .footer-links a {
             color: white;
-            margin: 0 10px;
+            margin-top: 10px;
             text-decoration: none;
+
+        }
+
+
+        .hamburger-menu div {
+            width: 30px;
+            height: 3px;
+            background-color: white;
+            margin: 6px 0;
+            transition: 0.4s;
+            margin-left: 20px;
+        }
+
+        .mobile-nav {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background-color: #003366;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.mobile-nav.show {
+    opacity: 1;
+    transform: translateY(0);
+    top: 60px; /* Updated this line to position it below the header */
+}
+
+.hamburger-menu {
+    display: none;
+    cursor: pointer;
+    order: -1;
+    margin: 0 auto;
+    z-index: 1001;
+}
+.mobile-nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.footer-contact {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .mobile-nav a {
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            text-align: center;
+            display: block;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .mobile-nav a:hover {
+            background-color: #fff;
+            color: #001f3f;
+        }
+        .filter-search-container i {
+    margin-right: 5px;
+    font-size: 18px;
+    color: #fff;
+}
+
+.filter-icon {
+    color: #000000;
+}
+
+.search-icon {
+    color: #000000;
+}
+
+        @media (max-width: 768px) {
+    .mobile-nav.show {
+        display: flex;
+    }
+}
+        @media (max-width: 768px) {
+            .hamburger-menu {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                background-color: #003366;
+                z-index: 999;
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            nav li {
+                margin: 0;
+                width: 100%;
+            }
+        }
+        @media (max-width: 768px) {
+    header {
+        padding: 10px 0;
+    }
+
+    header img {
+        margin-bottom: 0;
+    }
+}
+        @media (max-width: 768px) {
+    nav {
+        padding: 8px 0;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav li {
+        margin: 10px 0;
+        margin-left: 4px;
+    }
+}
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @media (max-width: 768px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+
+    article {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .filter-search-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-select,
+    .search-input {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+
+@media (max-width: 600px) {
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+.filter-search-container-mobile {
+            display: none;
+            flex-direction: column;
+            align-items: stretch;
+            margin-top: 20px;
+        }
+
+        .filter-search-container-mobile label,
+        .filter-search-container-mobile i {
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .filter-search-container-mobile {
+                display: flex;
+            }
+
+            .filter-search-container {
+                display: none;
+            }
         }
     </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <a class="navbar-brand" href="#">
-            <img src="https://media.discordapp.net/attachments/1141088719261155469/1187452917335208026/EMBLEM.png?ex=6596f0b5&is=65847bb5&hm=0e14c7d2d379ebf2db26778b3c6dd61f8e577f97cc2a4882535f0215356d56ab&=&format=webp&quality=lossless&width=205&height=205"
-                alt="Logo">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                  <a class="nav-link" href="index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="About-us.html">About</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="history.html">History</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="ministries.html">Our Ministries</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="news.html">News</a>
-                </li>
-              </ul>
-        </div>
-        <!-- Add the following inside your navbar right before the closing </nav> tag -->
-        <div class="navbar-text ml-auto d-none d-md-block">
-            <p class="navbar-title">Elementsian Government</p>
-        </div>
+    <header>
+        <img src="https://media.discordapp.net/attachments/1101785167233826846/1192896970981912606/Coat_of_arms_png-removebg-preview.png?ex=65aabee0&is=659849e0&hm=04d1a6f77252930ae3e5a0e4414ef228965b5e74bf933bc24b9f88c039b17b5a&=&format=webp&quality=lossless&width=625&height=625" alt="Logo">
+        <h1>Elementsian Government</h1>
 
+
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+            <li><a href="history.html"><i class="fas fa-history"></i> History</a></li>
+            <li><a href="ministries.html"><i class="fas fa-university"></i> Ministries</a></li>
+            <li><a href="news.html"><i class="fas fa-newspaper"></i> News</a></li>
+            <li><a href="immigrate.html"><i class="fas fa-cogs"></i> Immigration</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+    
+        <div class="hamburger-menu" onclick="toggleMobileNav()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
     </nav>
+    <div class="mobile-nav" id="mobileNav">
+        <ul>
+          <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+          <li><a href="history.html"><i class="fas fa-history"></i> History</a></li>
+          <li><a href="ministries.html"><i class="fas fa-university"></i> Ministries</a></li>
+          <li><a href="news.html"><i class="fas fa-newspaper"></i> News</a></li>
+          <li><a href="immigrate.html"><i class="fas fa-cogs"></i> Immigration</a></li>
+          <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+    </div>
 
     <div class="filter-search-container">
         <i class="fas fa-filter filter-icon"></i>
@@ -297,11 +509,13 @@
             <option value="technology">Technology</option>
             <!-- Add more categories as needed -->
         </select>
-
+    
+        <i class="fas fa-search search-icon"></i>
         <label for="search" style="display: none;">Search:</label>
         <input type="text" id="search" class="search-input" placeholder="Enter keywords...">
     </div>
 
+    
 
     <main>
         <main>
@@ -408,7 +622,7 @@
     </div>
 
     <footer>
-        <div class="container">
+        <div class="footer-container">
             <div class="footer-contact">
                 <div class="footer-contact-item">
                     <i class="fas fa-envelope"></i>
@@ -419,17 +633,61 @@
                     <p>Twitter: <a href="https://twitter.com/ElementsiaGov">Follow us on Twitter</a></p>
                 </div>
             </div>
+            
             <div class="footer-links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Use</a>
-                <a href="#">Accessibility</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Use</a>
+                <a href="acc.html">Accessibility</a>
+                <a href="credits.html">Credits</a>
             </div>
+            <br>
             <p>&copy; Elementsian Government 2024. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
-        // Your existing JavaScript code remains unchanged
+                document.addEventListener("DOMContentLoaded", function () {
+        const mobileNav = document.getElementById('mobileNav');
+        const hamburgerMenu = document.querySelector('.hamburger-menu');
+
+        hamburgerMenu.addEventListener('click', function () {
+            mobileNav.classList.toggle('show');
+        });
+    });
+    document.addEventListener("DOMContentLoaded", function () {
+        const filterSelect = document.getElementById('filter');
+        const searchInput = document.getElementById('search');
+        const articles = document.querySelectorAll('.main article');
+
+        filterSelect.addEventListener('change', filterArticles);
+        searchInput.addEventListener('input', searchArticles);
+
+        function filterArticles() {
+            const selectedCategory = filterSelect.value.toLowerCase();
+
+            articles.forEach(article => {
+                const articleCategory = article.getAttribute('data-category').toLowerCase();
+                if (selectedCategory === 'all' || selectedCategory === articleCategory) {
+                    article.style.display = 'block';
+                } else {
+                    article.style.display = 'none';
+                }
+            });
+        }
+
+        function searchArticles() {
+            const searchTerm = searchInput.value.toLowerCase();
+
+            articles.forEach(article => {
+                const articleText = article.textContent.toLowerCase();
+                if (articleText.includes(searchTerm)) {
+                    article.style.display = 'block';
+                } else {
+                    article.style.display = 'none';
+                }
+            });
+        }
+    });
     </script>
 </body>
 

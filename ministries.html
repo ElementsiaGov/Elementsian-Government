@@ -13,11 +13,69 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url(https://media.discordapp.net/attachments/1101785167233826846/1192885543147667527/R.png?ex=65aab43c&is=65983f3c&hm=4f1ac0714b5c535a089a2c5dc075721a3f7769405ad2bd053d75efda145fcc1f&=&format=webp&quality=lossless&width=983&height=642) no-repeat center center fixed;
+    background-size: cover;
+}
+
+header {
+    background-color: #001f3f;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border-bottom: 2px rgb(230, 193, 13) solid;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+header img {
+    max-width: 85px;
+    margin-right: 10px;
+}
+
+nav {
+    background-color: #003366;
+    padding: 8px;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+nav ul {
+    margin-top: 4px;
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav li {
+    margin: 0 15px;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 20px;
+    transition: background-color 0.3s, color 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+nav a i {
+    margin-right: 5px;
+}
+
+nav a:hover {
+    background-color: #fff;
+    color: #001f3f;
+}
         .container {
             max-width: 3100px;
             margin: 0 auto;
@@ -25,12 +83,13 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
+            background-color: rgba(196, 165, 85, 0);
         }
         .ministry {
             width: calc(50% - 20px);
             margin: 10px;
             padding: 20px;
-            background-color: #fff;
+            background-color: rgba(237, 237, 238, 0.9);
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             overflow: hidden;
@@ -65,7 +124,8 @@
         .ministry i {
             font-size: 24px;
             margin-right: 10px;
-            transition: transform 0.3s ease;
+            color: #3498db;
+            transition: transform 0.3s ease, color 0.3s ease;
         }
         .ministry:hover i {
             transform: rotate(360deg);
@@ -80,40 +140,148 @@
             transform: scale(1.1);
         }
         .navbar-brand img {
-    max-height: 40px; /* Adjust the max height as needed */
-    width: auto; /* Maintain the aspect ratio */
-}
-footer {
-            background-color: #b3b8ba;
-    color: #333; /* Darker text color for better visibility */
-    padding: 20px 0;
-    text-align: center;
-    font-family: 'Arial', sans-serif; /* Use a formal font */
-    margin-top: 20px;
-    border-top: solid black 3px;
+            max-height: 35px;
+            width: auto;
         }
-
+        footer {
+            background-color: #1a4657;
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            margin-top: 10px;
+            border-top: solid black 3px;
+        }
         .footer-contact {
             display: flex;
             justify-content: center;
             margin-bottom: 20px;
         }
-
         .footer-contact-item {
             margin-right: 20px;
         }
-
         .footer-contact-item i {
             font-size: 24px;
             margin-bottom: 10px;
             display: block;
         }
-
         .footer-links a {
             color: white;
-            margin: 0 10px;
+            margin-top: 10px;
             text-decoration: none;
+
         }
+
+
+        .hamburger-menu div {
+            width: 30px;
+            height: 3px;
+            background-color: white;
+            margin: 6px 0;
+            transition: 0.4s;
+            margin-left: 20px;
+        }
+
+        .mobile-nav {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background-color: #003366;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Change z-index value to 1000 */
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.mobile-nav.show {
+    opacity: 1;
+    transform: translateY(0);
+    top: 60px; /* Updated this line to position it below the header */
+}
+
+.hamburger-menu {
+    display: none;
+    cursor: pointer;
+    order: -1;
+    margin: 0 auto;
+    z-index: 1001;
+}
+.mobile-nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+        .mobile-nav a {
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            text-align: center;
+            display: block;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .mobile-nav a:hover {
+            background-color: #fff;
+            color: #001f3f;
+        }
+        @media (max-width: 768px) {
+    .mobile-nav.show {
+        display: flex;
+    }
+}
+        @media (max-width: 768px) {
+            .hamburger-menu {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                background-color: #003366;
+                z-index: 999;
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            nav li {
+                margin: 0;
+                width: 100%;
+            }
+        }
+        @media (max-width: 768px) {
+    header {
+        padding: 10px 0;
+    }
+
+    header img {
+        margin-bottom: 0;
+    }
+}
+        @media (max-width: 768px) {
+    nav {
+        padding: 8px 0;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav li {
+        margin: 10px 0;
+        margin-left: 4px;
+    }
+}
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -130,231 +298,246 @@ footer {
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <a class="navbar-brand" href="#">
-          <img src="https://media.discordapp.net/attachments/1141088719261155469/1187452917335208026/EMBLEM.png?ex=6596f0b5&is=65847bb5&hm=0e14c7d2d379ebf2db26778b3c6dd61f8e577f97cc2a4882535f0215356d56ab&=&format=webp&quality=lossless&width=205&height=205" alt="Logo">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="About-us.html">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="history.html">History</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="ministries.html">Our Ministries</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="news.html">News</a>
-            </li>
-          </ul>
-        </div>
-        <!-- Add the following inside your navbar right before the closing </nav> tag -->
-        <div class="navbar-text ml-auto d-none d-md-block">
-            <p class="navbar-title">Elementsian Government</p>
-        </div>
-      </nav>
-      <br>
-      <br>
-      <br>
-      
-<div class="container" id="ministriesContainer"></div>
+    <header>
+        <img src="https://media.discordapp.net/attachments/1101785167233826846/1192896970981912606/Coat_of_arms_png-removebg-preview.png?ex=65aabee0&is=659849e0&hm=04d1a6f77252930ae3e5a0e4414ef228965b5e74bf933bc24b9f88c039b17b5a&=&format=webp&quality=lossless&width=625&height=625" alt="Logo">
+        <h1>Elementsian Government</h1>
 
-<footer>
-    <div class="footer-container">
-        <div class="footer-contact">
-            <div class="footer-contact-item">
-                <i class="fas fa-envelope"></i>
-                <p>Email: <a href="mailto:contact@elementsia.gov">contact@elementsia.gov</a></p>
-            </div>
-            <div class="footer-contact-item">
-                <i class="fab fa-twitter"></i>
-                <p>Twitter: <a href="https://twitter.com/ElementsiaGov">Follow us on Twitter</a></p>
-            </div>
+
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+            <li><a href="history.html"><i class="fas fa-history"></i> History</a></li>
+            <li><a href="ministries.html"><i class="fas fa-university"></i> Ministries</a></li>
+            <li><a href="news.html"><i class="fas fa-newspaper"></i> News</a></li>
+            <li><a href="immigrate.html"><i class="fas fa-cogs"></i> Immigration</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+    
+        <div class="hamburger-menu" onclick="toggleMobileNav()">
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
-        <div class="footer-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Use</a>
-            <a href="#">Accessibility</a>
-        </div>
-        <p>&copy; Elementsian Government 2024. All rights reserved.</p>
+    </nav>
+    <div class="mobile-nav" id="mobileNav">
+        <ul>
+          <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+          <li><a href="history.html"><i class="fas fa-history"></i> History</a></li>
+          <li><a href="ministries.html"><i class="fas fa-university"></i> Ministries</a></li>
+          <li><a href="news.html"><i class="fas fa-newspaper"></i> News</a></li>
+          <li><a href="immigrate.html"><i class="fas fa-cogs"></i> Immigration</a></li>
+          <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
     </div>
-  </footer>
+      
 
-<script>
-    class Ministry {
-        constructor(name, description, url, overview, iconClass) {
-            this.name = name;
-            this.description = description;
-            this.url = url;
-            this.overview = overview;
-            this.iconClass = iconClass;
-        }
+    <div class="container" id="ministriesContainer"></div>
 
-        generateHTML() {
-            return `
-                <div class="ministry">
-                    <h3><i class="${this.iconClass}"></i> <a href="${this.url}" target="_blank">${this.name}</a></h3>
-                    <p>${this.description}</p>
-                    <div class="expanded-content">
-                        <p>${this.overview}</p>
-                        <a href="${this.url}" target="_blank">Visit Website</a>
-                    </div>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-contact">
+                <div class="footer-contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <p>Email: <a href="mailto:contact@elementsia.gov">contact@elementsia.gov</a></p>
                 </div>
-            `;
+                <div class="footer-contact-item">
+                    <i class="fab fa-twitter"></i>
+                    <p>Twitter: <a href="https://twitter.com/ElementsiaGov">Follow us on Twitter</a></p>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Use</a>
+                <a href="acc.html">Accessibility</a>
+                <a href="credits.html">Credits</a>
+            </div>
+            <br>
+            <p>&copy; Elementsian Government 2024. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        class Ministry {
+            constructor(name, description, url, overview, iconClass) {
+                this.name = name;
+                this.description = description;
+                this.url = url;
+                this.overview = overview;
+                this.iconClass = iconClass;
+            }
+    
+            generateHTML() {
+                return `
+                    <div class="ministry">
+                        <h3><i class="${this.iconClass}"></i> <a href="${this.url}" target="_blank">${this.name}</a></h3>
+                        <p>${this.description}</p>
+                        <div class="expanded-content">
+                            <p>${this.overview}</p>
+                            <a href="${this.url}" target="_blank">Visit Website</a>
+                        </div>
+                    </div>
+                `;
+            }
         }
-    }
+    
+        const ministriesData = [
+            {
+                name: "Department of Education",
+                description: "The Department of Education is dedicated to providing high-quality education to students. Our programs focus on fostering critical thinking, creativity, and lifelong learning. We aim to prepare students for success in a rapidly changing world.",
+                url: "https://education.gov",
+                overview: "See More",
+                iconClass: "fas fa-graduation-cap"
+            },
+            {
+                name: "Department of Science and Technology",
+                description: "The Department of Science and Technology is at the forefront of innovation and research. We strive to advance scientific knowledge, promote technological development, and contribute to the growth of industries that shape the future.",
+                url: "https://science.gov",
+                overview: "See More",
+                iconClass: "fas fa-flask"
+            },
+            {
+                name: "Department of Health",
+                description: "The Department of Health is committed to ensuring the well-being of our citizens. We focus on disease prevention, healthcare accessibility, and public health initiatives. Our goal is to create a healthy and thriving community.",
+                url: "https://health.gov",
+                overview: "See More",
+                iconClass: "fas fa-hospital"
+            },
+            {
+                name: "Department of Finance",
+                description: "The Department of Finance plays a crucial role in managing the financial resources of the government. We aim to ensure fiscal responsibility, economic stability, and efficient allocation of funds for the overall development of the nation.",
+                url: "https://finance.gov",
+                overview: "See More",
+                iconClass: "fas fa-chart-bar"
+            },
+            {
+                name: "Department of Environmental Affairs",
+                description: "The Department of Environmental Affairs is dedicated to preserving and protecting our environment. We work towards sustainable practices, biodiversity conservation, and raising awareness about environmental issues for a greener and healthier planet.",
+                url: "https://environment.gov",
+                overview: "See More",
+                iconClass: "fas fa-leaf"
+            },
+            {
+                name: "Department of Transportation",
+                description: "The Department of Transportation is responsible for developing and maintaining efficient transportation systems. We focus on enhancing infrastructure, promoting safety, and facilitating the movement of people and goods.",
+                url: "https://transportation.gov",
+                overview: "See More",
+                iconClass: "fas fa-car"
+            },
+            {
+                name: "Department of Justice",
+                description: "The Department of Justice is committed to upholding the rule of law and ensuring justice for all. We work to protect citizens' rights, prosecute offenders, and promote a fair and just legal system.",
+                url: "https://justice.gov",
+                overview: "See More",
+                iconClass: "fas fa-balance-scale"
+            },
+            {
+                name: "Department of Energy",
+                description: "The Department of Energy focuses on sustainable energy development, resource management, and promoting energy efficiency. Our goal is to ensure a reliable and sustainable energy supply for the nation.",
+                url: "https://energy.gov",
+                overview: "See More",
+                iconClass: "fas fa-bolt"
+            },
+            {
+                name: "Department of Agriculture",
+                description: "The Department of Agriculture is dedicated to promoting agriculture, ensuring food safety, and supporting rural communities. We work towards sustainable farming practices and a secure food supply.",
+                url: "https://agriculture.gov",
+                overview: "See More",
+                iconClass: "fas fa-seedling"
+            },
+            {
+                name: "Department of Space Administration and Exploration",
+                description: "The Department of Space Administration and Exploration leads the nation in space exploration endeavors. We aim to explore new frontiers, conduct scientific research in space, and contribute to advancements in space technology.",
+                url: "https://space.gov",
+                overview: "See More",
+                iconClass: "fas fa-rocket"
+            },
+            {
+                name: "Department of Housing and Urban Development",
+                description: "The Department of Housing and Urban Development works towards creating sustainable and inclusive communities. We focus on affordable housing, urban planning, and development policies to enhance living standards.",
+                url: "https://housing.gov",
+                overview: "See More",
+                iconClass: "fas fa-home"
+            },
+            {
+                name: "Department of Homeland Security",
+                description: "The Department of Homeland Security is dedicated to safeguarding the nation from various threats. We focus on ensuring national security, disaster response, and protecting citizens from cyber and physical threats.",
+                url: "https://homelandsecurity.gov",
+                overview: "See More",
+                iconClass: "fas fa-shield-alt"
+            },
+            {
+                name: "Department of Commerce",
+                description: "The Department of Commerce promotes economic growth and development. We focus on trade, industry, and innovation to enhance competitiveness, support businesses, and foster a vibrant economy.",
+                url: "https://commerce.gov",
+                overview: "See More",
+                iconClass: "fas fa-industry"
+            },
+            {
+                name: "Department of Veterans Affairs",
+                description: "The Department of Veterans Affairs serves and honors our veterans. We provide healthcare, benefits, and support to veterans and their families, ensuring they receive the care and assistance they deserve.",
+                url: "https://veterans.gov",
+                overview: "See More",
+                iconClass: "fas fa-medal"
+            },
+            {
+                name: "Department of Transportation",
+                description: "The Department of Transportation is responsible for developing and maintaining efficient transportation systems. We focus on enhancing infrastructure, promoting safety, and facilitating the movement of people and goods.",
+                url: "https://transportation.gov",
+                overview: "See More",
+                iconClass: "fas fa-bus"
+            },
+            {
+                name: "Department of Information Technology",
+                description: "The Department of Information Technology is dedicated to advancing technology and digital innovation. We focus on developing and implementing IT solutions, cybersecurity, and ensuring the secure use of technology in government.",
+                url: "https://technology.gov",
+                overview: "See More",
+                iconClass: "fas fa-laptop"
+            },
+            {
+                name: "Department of Cultural Affairs",
+                description: "The Department of Cultural Affairs promotes and preserves the rich cultural heritage of our nation. We support arts, heritage, and cultural initiatives to celebrate diversity and foster creativity in society.",
+                url: "https://culture.gov",
+                overview: "See More",
+                iconClass: "fas fa-paint-brush"
+            },
+            {
+                name: "Department of International Relations",
+                description: "The Department of International Relations plays a crucial role in diplomatic affairs. We work towards building strong international partnerships, fostering global cooperation, and representing the nation's interests on the global stage.",
+                url: "https://internationalrelations.gov",
+                overview: "See More",
+                iconClass: "fas fa-globe"
+            },
+            {
+                name: "Department of Social Services",
+                description: "The Department of Social Services is committed to enhancing the well-being of individuals and communities. We provide social support, welfare programs, and services to ensure a better quality of life for all citizens.",
+                url: "https://socialservices.gov",
+                overview: "See More",
+                iconClass: "fas fa-hands-helping"
+            },
+        ];
+    
+        const ministriesContainer = document.getElementById("ministriesContainer");
+    
+        ministriesData.forEach(data => {
+            const ministry = new Ministry(data.name, data.description, data.url, data.overview, data.iconClass);
+            ministriesContainer.innerHTML += ministry.generateHTML();
+        });
 
-    const ministriesData = [
-        {
-            name: "Department of Education",
-            description: "The Department of Education is dedicated to providing high-quality education to students. Our programs focus on fostering critical thinking, creativity, and lifelong learning. We aim to prepare students for success in a rapidly changing world.",
-            url: "https://education.gov",
-            overview: "See More",
-            iconClass: "fas fa-graduation-cap"
-        },
-        {
-            name: "Department of Science and Technology",
-            description: "The Department of Science and Technology is at the forefront of innovation and research. We strive to advance scientific knowledge, promote technological development, and contribute to the growth of industries that shape the future.",
-            url: "https://science.gov",
-            overview: "See More",
-            iconClass: "fas fa-flask"
-        },
-        {
-            name: "Department of Health",
-            description: "The Department of Health is committed to ensuring the well-being of our citizens. We focus on disease prevention, healthcare accessibility, and public health initiatives. Our goal is to create a healthy and thriving community.",
-            url: "https://health.gov",
-            overview: "See More",
-            iconClass: "fas fa-hospital"
-        },
-        {
-            name: "Department of Finance",
-            description: "The Department of Finance plays a crucial role in managing the financial resources of the government. We aim to ensure fiscal responsibility, economic stability, and efficient allocation of funds for the overall development of the nation.",
-            url: "https://finance.gov",
-            overview: "See More",
-            iconClass: "fas fa-chart-bar"
-        },
-        {
-            name: "Department of Environmental Affairs",
-            description: "The Department of Environmental Affairs is dedicated to preserving and protecting our environment. We work towards sustainable practices, biodiversity conservation, and raising awareness about environmental issues for a greener and healthier planet.",
-            url: "https://environment.gov",
-            overview: "See More",
-            iconClass: "fas fa-leaf"
-        },
-        {
-            name: "Department of Transportation",
-            description: "The Department of Transportation is responsible for developing and maintaining efficient transportation systems. We focus on enhancing infrastructure, promoting safety, and facilitating the movement of people and goods.",
-            url: "https://transportation.gov",
-            overview: "See More",
-            iconClass: "fas fa-car"
-        },
-        {
-            name: "Department of Justice",
-            description: "The Department of Justice is committed to upholding the rule of law and ensuring justice for all. We work to protect citizens' rights, prosecute offenders, and promote a fair and just legal system.",
-            url: "https://justice.gov",
-            overview: "See More",
-            iconClass: "fas fa-balance-scale"
-        },
-        {
-            name: "Department of Energy",
-            description: "The Department of Energy focuses on sustainable energy development, resource management, and promoting energy efficiency. Our goal is to ensure a reliable and sustainable energy supply for the nation.",
-            url: "https://energy.gov",
-            overview: "See More",
-            iconClass: "fas fa-bolt"
-        },
-        {
-            name: "Department of Agriculture",
-            description: "The Department of Agriculture is dedicated to promoting agriculture, ensuring food safety, and supporting rural communities. We work towards sustainable farming practices and a secure food supply.",
-            url: "https://agriculture.gov",
-            overview: "See More",
-            iconClass: "fas fa-seedling"
-        },
-        {
-            name: "Department of Space Administration and Exploration",
-            description: "The Department of Space Administration and Exploration leads the nation in space exploration endeavors. We aim to explore new frontiers, conduct scientific research in space, and contribute to advancements in space technology.",
-            url: "https://space.gov",
-            overview: "See More",
-            iconClass: "fas fa-rocket"
-        },
-        {
-            name: "Department of Housing and Urban Development",
-            description: "The Department of Housing and Urban Development works towards creating sustainable and inclusive communities. We focus on affordable housing, urban planning, and development policies to enhance living standards.",
-            url: "https://housing.gov",
-            overview: "See More",
-            iconClass: "fas fa-home"
-        },
-        {
-            name: "Department of Homeland Security",
-            description: "The Department of Homeland Security is dedicated to safeguarding the nation from various threats. We focus on ensuring national security, disaster response, and protecting citizens from cyber and physical threats.",
-            url: "https://homelandsecurity.gov",
-            overview: "See More",
-            iconClass: "fas fa-shield-alt"
-        },
-        {
-            name: "Department of Commerce",
-            description: "The Department of Commerce promotes economic growth and development. We focus on trade, industry, and innovation to enhance competitiveness, support businesses, and foster a vibrant economy.",
-            url: "https://commerce.gov",
-            overview: "See More",
-            iconClass: "fas fa-industry"
-        },
-        {
-            name: "Department of Veterans Affairs",
-            description: "The Department of Veterans Affairs serves and honors our veterans. We provide healthcare, benefits, and support to veterans and their families, ensuring they receive the care and assistance they deserve.",
-            url: "https://veterans.gov",
-            overview: "See More",
-            iconClass: "fas fa-medal"
-        },
-        {
-            name: "Department of Transportation",
-            description: "The Department of Transportation is responsible for developing and maintaining efficient transportation systems. We focus on enhancing infrastructure, promoting safety, and facilitating the movement of people and goods.",
-            url: "https://transportation.gov",
-            overview: "See More",
-            iconClass: "fas fa-bus"
-        },
-        {
-            name: "Department of Information Technology",
-            description: "The Department of Information Technology is dedicated to advancing technology and digital innovation. We focus on developing and implementing IT solutions, cybersecurity, and ensuring the secure use of technology in government.",
-            url: "https://technology.gov",
-            overview: "See More",
-            iconClass: "fas fa-laptop"
-        },
-        {
-            name: "Department of Cultural Affairs",
-            description: "The Department of Cultural Affairs promotes and preserves the rich cultural heritage of our nation. We support arts, heritage, and cultural initiatives to celebrate diversity and foster creativity in society.",
-            url: "https://culture.gov",
-            overview: "See More",
-            iconClass: "fas fa-paint-brush"
-        },
-        {
-            name: "Department of International Relations",
-            description: "The Department of International Relations plays a crucial role in diplomatic affairs. We work towards building strong international partnerships, fostering global cooperation, and representing the nation's interests on the global stage.",
-            url: "https://internationalrelations.gov",
-            overview: "See More",
-            iconClass: "fas fa-globe"
-        },
-        {
-            name: "Department of Social Services",
-            description: "The Department of Social Services is committed to enhancing the well-being of individuals and communities. We provide social support, welfare programs, and services to ensure a better quality of life for all citizens.",
-            url: "https://socialservices.gov",
-            overview: "See More",
-            iconClass: "fas fa-hands-helping"
-        },
-    ];
+        document.addEventListener("DOMContentLoaded", function () {
+        const mobileNav = document.getElementById('mobileNav');
+        const hamburgerMenu = document.querySelector('.hamburger-menu');
 
-    const ministriesContainer = document.getElementById("ministriesContainer");
-
-    ministriesData.forEach(data => {
-        const ministry = new Ministry(data.name, data.description, data.url, data.overview, data.iconClass);
-        ministriesContainer.innerHTML += ministry.generateHTML();
+        hamburgerMenu.addEventListener('click', function () {
+            mobileNav.classList.toggle('show');
+        });
     });
-</script>
+    </script>
 
 </body>
 </html>

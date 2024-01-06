@@ -3,47 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="styles.css">
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+
+  <!-- Bootstrap scripts (jQuery and Popper.js) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.9/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </head>
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-    <a class="navbar-brand" href="#">
-      <img src="https://media.discordapp.net/attachments/1141088719261155469/1187452917335208026/EMBLEM.png?ex=6596f0b5&is=65847bb5&hm=0e14c7d2d379ebf2db26778b3c6dd61f8e577f97cc2a4882535f0215356d56ab&=&format=webp&quality=lossless&width=205&height=205" alt="Logo">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="index.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="About-us.html">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="history.html">History</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="ministries.html">Our Ministries</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="news.html">News</a>
-        </li>
-      </ul>
+  <header>
+    <img src="https://media.discordapp.net/attachments/1101785167233826846/1192896970981912606/Coat_of_arms_png-removebg-preview.png?ex=65aabee0&is=659849e0&hm=04d1a6f77252930ae3e5a0e4414ef228965b5e74bf933bc24b9f88c039b17b5a&=&format=webp&quality=lossless&width=625&height=625" alt="Logo">
+    <h1>Elementsian Government</h1>
+
+
+</header>
+
+<!-- Navigation Bar -->
+<nav>
+    <ul>
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+        <li><a href="history.html"><i class="fas fa-history"></i> History</a></li>
+        <li><a href="ministries.html"><i class="fas fa-university"></i> Ministries</a></li>
+        <li><a href="news.html"><i class="fas fa-newspaper"></i> News</a></li>
+        <li><a href="immigrate.html"><i class="fas fa-cogs"></i> Immigration</a></li>
+        <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+    </ul>
+
+    <div class="hamburger-menu" onclick="toggleMobileNav()">
+        <div></div>
+        <div></div>
+        <div></div>
     </div>
-    <!-- Add the following inside your navbar right before the closing </nav> tag -->
-    <div class="navbar-text ml-auto d-none d-md-block">
-        <p class="navbar-title">Elementsian Government</p>
-      </div>
-  
-  </nav>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+    <ul>
+      <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+      <li><a href="history.html"><i class="fas fa-history"></i> History</a></li>
+      <li><a href="ministries.html"><i class="fas fa-university"></i> Ministries</a></li>
+      <li><a href="news.html"><i class="fas fa-newspaper"></i> News</a></li>
+      <li><a href="immigrate.html"><i class="fas fa-cogs"></i> Immigration</a></li>
+      <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+    </ul>
+</div>
   
 
   <div class="welcome-section mt-5">
@@ -86,29 +93,28 @@
 
   <div id="imageCarousel" class="carousel slide mt-5" data-ride="carousel">
     <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="https://media.discordapp.net/attachments/1101785167233826846/1187473086858145822/Legi_dep.png?ex=6597037e&is=65848e7e&hm=bfa3da449ef2597853dc48cf94f2df7d9e87fb604b13730a1ece47f293f9e165&=&format=webp&quality=lossless&width=1000&height=501" class="d-block w-100" alt="Carousel Image 1">
-      </div>
-      <div class="carousel-item">
-        <img src="https://media.discordapp.net/attachments/1101785167233826846/1187473087185309746/Med_dep.png?ex=6597037e&is=65848e7e&hm=53e3f2bf8a1d6f6a0b02f14548224380ae12109a4c120d78b1b6db4b2b1c1e91&=&format=webp&quality=lossless&width=1000&height=501" class="d-block w-100" alt="Carousel Image 2">
-      </div>
-      <div class="carousel-item">
-        <img src="https://media.discordapp.net/attachments/1101785167233826846/1187473087596335266/Fire_dep.png?ex=6597037e&is=65848e7e&hm=c4f49c6ced7c6f33b08423c93d5bc02bc94137de13a2466f0c6aa565a7c63182&=&format=webp&quality=lossless&width=1000&height=501" class="d-block w-100" alt="Carousel Image 3">
-      </div>
-      <div class="carousel-item">
-        <img src="https://media.discordapp.net/attachments/1101785167233826846/1187474117709008936/Def_dep.png?ex=65970473&is=65848f73&hm=c54e3fa9b13c7af0e0b572dcd9d146ef71cba94b9737f9f5ba6f6a72e44e26e6&=&format=webp&quality=lossless&width=1000&height=501" class="d-block w-100" alt="Carousel Image 3">
-      </div>
+        <div class="carousel-item active">
+            <img src="https://media.discordapp.net/attachments/1101785167233826846/1192918837125972149/TOGETHER_WE_CAN_SAVE.png?ex=65aad33e&is=65985e3e&hm=14c725c7d2234a3055291174f1cf643db9954b2b58e664a9fab2bb36b322f2bf&=&format=webp&quality=lossless&width=1000&height=376" class="d-block w-100" alt="Carousel Image 1">
+        </div>
+        <div class="carousel-item">
+            <img src="https://media.discordapp.net/attachments/1101785167233826846/1192918837482496141/HELP_US_TO_PROTECT.png?ex=65aad33e&is=65985e3e&hm=cad1c020631dd973479c81f7eff4801596075a90b0f138814a42abf0b1dd91be&=&format=webp&quality=lossless&width=1000&height=376" class="d-block w-100" alt="Carousel Image 2">
+        </div>
+        <div class="carousel-item">
+            <img src="https://media.discordapp.net/attachments/1101785167233826846/1192918837809655849/Untitled_design_1.png?ex=65aad33e&is=65985e3e&hm=c856307232e13561ea90d1583c8a5b05e4e13270a607d287d06e5c5a30243082&=&format=webp&quality=lossless&width=1000&height=376" class="d-block w-100" alt="Carousel Image 3">
+        </div>
+        <div class="carousel-item">
+            <img src="https://media.discordapp.net/attachments/1101785167233826846/1192918838178742293/OUR_POLICE_IS_HERE_TO_HELP_1.png?ex=65aad33e&is=65985e3e&hm=4635f90147e9ca72be50fb2f70627b9c7a94c3cd03a257d734e8b7cae3029900&=&format=webp&quality=lossless&width=1000&height=376" class="d-block w-100" alt="Carousel Image 4">
+        </div>
     </div>
     <a class="carousel-control-prev" href="#imageCarousel" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
     </a>
     <a class="carousel-control-next" href="#imageCarousel" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
     </a>
-  </div>
-
+</div>
   <div class="values-section mt-5">
     <div class="container">
       <div class="row">
@@ -128,25 +134,38 @@
     </div>
   </div>
 <br>
-  <footer>
-    <div class="container">
-        <div class="footer-contact">
-            <div class="footer-contact-item">
-                <i class="fas fa-envelope"></i>
-                <p>Email: <a href="mailto:contact@elementsia.gov">contact@elementsia.gov</a></p>
-            </div>
-            <div class="footer-contact-item">
-                <i class="fab fa-twitter"></i>
-                <p>Twitter: <a href="https://twitter.com/ElementsiaGov">Follow us on Twitter</a></p>
-            </div>
-        </div>
-        <div class="footer-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Use</a>
-            <a href="#">Accessibility</a>
-        </div>
-        <p>&copy; Elementsian Government 2024. All rights reserved.</p>
-    </div>
+<footer>
+  <div class="footer-container">
+      <div class="footer-contact">
+          <div class="footer-contact-item">
+              <i class="fas fa-envelope"></i>
+              <p>Email: <a href="mailto:contact@elementsia.gov">contact@elementsia.gov</a></p>
+          </div>
+          <div class="footer-contact-item">
+              <i class="fab fa-twitter"></i>
+              <p>Twitter: <a href="https://twitter.com/ElementsiaGov">Follow us on Twitter</a></p>
+          </div>
+      </div>
+      
+      <div class="footer-links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Use</a>
+          <a href="acc.html">Accessibility</a>
+          <a href="credits.html">Credits</a>
+      </div>
+      <br>
+      <p>&copy; Elementsian Government 2024. All rights reserved.</p>
+  </div>
 </footer>
 </body>
+<script>
+          document.addEventListener("DOMContentLoaded", function () {
+        const mobileNav = document.getElementById('mobileNav');
+        const hamburgerMenu = document.querySelector('.hamburger-menu');
+
+        hamburgerMenu.addEventListener('click', function () {
+            mobileNav.classList.toggle('show');
+        });
+    });
+    </script>
 </html>
