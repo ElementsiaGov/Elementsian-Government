@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <!-- Bootstrap scripts (jQuery and Popper.js) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.9/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="icon" href="https://media.discordapp.net/attachments/1101785167233826846/1193168985961795674/FAVICON.png?ex=65abbc36&is=65994736&hm=1b5fae5b263d01020c4474cda36cc0cfe83e7a614c971674589d3cb37984b533&=&format=webp&quality=lossless&width=80&height=80" type="image/png">
+  <link rel="shortcut icon" href="https://media.discordapp.net/attachments/1101785167233826846/1193168985961795674/FAVICON.png?ex=65abbc36&is=65994736&hm=1b5fae5b263d01020c4474cda36cc0cfe83e7a614c971674589d3cb37984b533&=&format=webp&quality=lossless&width=80&height=80" type="image/png">
+
+  <style>
+    /* Your existing styles go here */
+
+    .province-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 20px;
+    }
+
+    .province {
+        width: 30%;
+        background-color: #fff;
+        margin: 10px;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .province:hover {
+        transform: scale(1.05);
+    }
+
+    .map, .flag {
+        width: 100%;
+        height: auto;
+        border: 1px solid #ccc;
+        margin-bottom: 10px;
+    }
+
+    .stats {
+        margin-bottom: 10px;
+    }
+
+    h2 {
+        color: #333;
+    }
+
+    p {
+        color: #555;
+    }
+    .navbar-title {
+    color: #060606;
+    font-weight: bold;
+    margin-right: 20px;
+    margin-top: 15px;
+  }
+
+  @media (max-width: 767px) {
+    .navbar-title {
+      display: none;
+    }
+  }
+
+  .about-section a.btn-primary {
+    background-color: #fff;
+    color: #006400;
+    border-color: #fff;
+  }
+
+  .about-section a.btn-primary:hover {
+    background-color: #b09a30;
+    color: #fff;
+    border-color: #fff;
+  }
+
+  .about-section {
+    background-color: #1a4258;
+    padding: 50px;
+    text-align: center;
+    margin-top: 0;
+  }
+
+  @media (max-width: 767px) {
+    .about-section {
+      padding: 20px;
+    }
+  }
+
+  footer {
+    background-color: #1a4657;
+    color: #ffffff;
+    padding: 20px 0;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    margin-top: 20px;
+    border-top: solid black 3px;
+  }
+
+  .footer-contact {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .footer-contact-item {
+    margin-right: 20px;
+  }
+
+  .footer-contact-item i {
+    font-size: 24px;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .footer-links a {
+    color: white;
+    margin-top: 10px;
+    text-decoration: none;
+  }
+
+  .footer-contact-item a:hover {
+    text-decoration: underline;
+  }
+
+  .footer-links a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 20px;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+
+  .footer-links a:hover {
+    color: #555;
+  }
+
+  .hamburger-menu div {
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    margin: 6px 0;
+    transition: 0.4s;
+    margin-left: 20px;
+  }
+
+  .mobile-nav {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background-color: #003366;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  }
+
+  .mobile-nav.show {
+    opacity: 1;
+    transform: translateY(0);
+    top: 60px;
+  }
+
+  .hamburger-menu {
+    display: none;
+    cursor: pointer;
+    order: -1;
+    margin: 0 auto;
+    z-index: 1001;
+  }
+
+  .mobile-nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .mobile-nav a {
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+    text-align: center;
+    display: block;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .mobile-nav a:hover {
+    background-color: #fff;
+    color: #001f3f;
+  }
+
+  @media (max-width: 768px) {
+    .mobile-nav.show {
+      display: flex;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hamburger-menu {
+      display: block;
+    }
+
+    nav ul {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      text-align: center;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      background-color: #003366;
+      z-index: 999;
+    }
+
+    nav ul.show {
+      display: flex;
+    }
+
+    nav li {
+      margin: 0;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    header {
+      padding: 10px 0;
+    }
+
+    header img {
+      margin-bottom: 0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    nav {
+      padding: 8px 0;
+    }
+
+    nav ul {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    nav li {
+      margin: 10px 0;
+      margin-left: 4px;
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  header {
+    background-color: #001f3f;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border-bottom: 2px rgb(230, 193, 13) solid;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-family: 'Times New Roman', Times, serif;
+  }
+
+  header img {
+    max-width: 85px;
+    margin-right: 10px;
+  }
+
+  nav {
+    background-color: #003366;
+    padding: 8px;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+  }
+
+  nav ul {
+    margin-top: 4px;
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+  }
+
+  nav li {
+    margin: 0 15px;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 20px;
+    transition: background-color 0.3s, color 0.3s;
+    display: flex;
+    align-items: center;
+  }
+
+  nav a i {
+    margin-right: 5px;
+  }
+
+  nav a:hover {
+    background-color: #fff;
+    color: #001f3f;
+  }
+  </style>
+</head>
+
+<body>
+    <header>
+        <img src="https://media.discordapp.net/attachments/1101785167233826846/1192896970981912606/Coat_of_arms_png-removebg-preview.png?ex=65aabee0&is=659849e0&hm=04d1a6f77252930ae3e5a0e4414ef228965b5e74bf933bc24b9f88c039b17b5a&=&format=webp&quality=lossless&width=625&height=625" alt="Logo">
+        <h1>Elementsian Government</h1>
+    
+    
+    </header>
+    
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+            <li><a href="history.html"><i class="fas fa-history"></i> History</a></li>
+            <li><a href="ministries.html"><i class="fas fa-university"></i> Ministries</a></li>
+            <li><a href="news.html"><i class="fas fa-newspaper"></i> News</a></li>
+            <li><a href="immigrate.html"><i class="fas fa-cogs"></i> Immigration</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+    
+        <div class="hamburger-menu" onclick="toggleMobileNav()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </nav>
+    <div class="mobile-nav" id="mobileNav">
+        <ul>
+          <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="aboutmombile.html"><i class="fas fa-info-circle"></i> About</a></li>
+          <li><a href="history.html"><i class="fas fa-history"></i> History</a></li>
+          <li><a href="ministries.html"><i class="fas fa-university"></i> Ministries</a></li>
+          <li><a href="news.html"><i class="fas fa-newspaper"></i> News</a></li>
+          <li><a href="immigrate.html"><i class="fas fa-cogs"></i> Immigration</a></li>
+          <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+    </div>
+  <!-- Your existing HTML content -->
+
+  <div class="values-section mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h2>Integrity</h2>
+          <p>We are committed to the highest standards of honesty and ethical behavior in everything we do.</p>
+        </div>
+        <div class="col-md-4">
+          <h2>Collaboration</h2>
+          <p>We believe in the power of teamwork and actively seek opportunities to collaborate for shared success.</p>
+        </div>
+        <div class="col-md-4">
+          <h2>Innovation</h2>
+          <p>We embrace innovation and continuously strive for creative solutions to meet evolving challenges.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Provinces Information -->
+  <div class="province-container">
+      <!-- Province 1 -->
+      <div class="province">
+          <img class="map" src="https://media.discordapp.net/attachments/1101785167233826846/1193312387680444446/image.png?ex=65ac41c3&is=6599ccc3&hm=6ffdf2ec4393e40f51b1d87377d33976e4e535c83870ecfc07ed29dad64f19b4&=&format=webp&quality=lossless&width=863&height=662" alt="Province 1 Map">
+          <img class="flag" src="https://media.discordapp.net/attachments/1101785167233826846/1193314345652858920/Untitled_design_3.png?ex=65ac4396&is=6599ce96&hm=9f83438943d83ad5244db44d34ae61b11f8a141e0b88489ec5da2d1265cbce88&=&format=webp&quality=lossless&width=903&height=662" alt="Province 1 Flag">
+          <div class="stats">
+              <h2>Province 1</h2>
+              <p>Economic Statistics: XYZ</p>
+              <p>Demographics: ABC</p>
+              <!-- Add other information as needed -->
+          </div>
+      </div>
+
+      <!-- Repeat the above structure for other provinces -->
+
+      <!-- Province 2 -->
+      <div class="province">
+          <img class="map" src="province2_map.jpg" alt="Province 2 Map">
+          <img class="flag" src="province2_flag.jpg" alt="Province 2 Flag">
+          <div class="stats">
+              <h2>Province 2</h2>
+              <p>Economic Statistics: XYZ</p>
+              <p>Demographics: ABC</p>
+              <!-- Add other information as needed -->
+          </div>
+      </div>
+
+      <!-- Repeat the above structure for other provinces -->
+
+  </div>
+
+  <!-- Your existing HTML content -->
+
+  <footer>
+    <div class="footer-container">
+        <div class="footer-contact">
+            <div class="footer-contact-item">
+                <i class="fas fa-envelope"></i>
+                <p>Email: <a href="mailto:contact@elementsia.gov">contact@elementsia.gov</a></p>
+            </div>
+            <div class="footer-contact-item">
+                <i class="fab fa-twitter"></i>
+                <p>Twitter: <a href="https://twitter.com/ElementsiaGov">Follow us on Twitter</a></p>
+            </div>
+        </div>
+        
+        <div class="footer-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Use</a>
+            <a href="acc.html">Accessibility</a>
+            <a href="credits.html">Credits</a>
+        </div>
+        <br>
+        <p>&copy; Elementsian Government 2024. All rights reserved.</p>
+    </div>
+  </footer>
+  </body>
+  <script>
+            document.addEventListener("DOMContentLoaded", function () {
+          const mobileNav = document.getElementById('mobileNav');
+          const hamburgerMenu = document.querySelector('.hamburger-menu');
+  
+          hamburgerMenu.addEventListener('click', function () {
+              mobileNav.classList.toggle('show');
+          });
+      });
+      </script>
+</body>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const mobileNav = document.getElementById('mobileNav');
+    const hamburgerMenu = document.querySelector('.hamburger-menu');
+
+    hamburgerMenu.addEventListener('click', function () {
+        mobileNav.classList.toggle('show');
+    });
+  });
+</script>
+
+</html>
