@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elementsian Government</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome CDN -->
-    <link rel="icon" type="image/png" href="https://media.discordapp.net/attachments/1101785167233826846/1205816432965853214/AXIOM.png?ex=65d9bf10&is=65c74a10&hm=c34a43b36fa44623dee26b465986a16fd378c5ff0314c546379a957fed2367b2&=&format=webp&quality=lossless&width=662&height=662">
+    <link rel="icon" href="https://media.discordapp.net/attachments/1101785167233826846/1193168985961795674/FAVICON.png?ex=65abbc36&is=65994736&hm=1b5fae5b263d01020c4474cda36cc0cfe83e7a614c971674589d3cb37984b533&=&format=webp&quality=lossless&width=80&height=80" type="image/png">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,13 +15,13 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-image: url("https://media.discordapp.net/attachments/1101785167233826846/1205861829830512690/4.png?ex=65d9e958&is=65c77458&hm=1b95740287c73c5e0985b1e91adcd67247d07feeb13ce0f1a44bdd51bc35804c&=&format=webp&quality=lossless&width=1193&height=671");
+            background-image: url("https://media.discordapp.net/attachments/1233775792278868045/1233779419739590696/4.png?ex=662e5620&is=662d04a0&hm=4e4b4949e5bc751e0b717fa791cdc14274b0126a2e234d56be6832530afa0a9c&=&format=webp&quality=lossless&width=687&height=386");
             background-size: cover;
             background-repeat: no-repeat;
             position: relative;
         }
         .login-container {
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(255, 255, 255, 0.767);
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -57,6 +57,12 @@
             border: 1px solid #ccc;
             border-radius: 50px;
             box-sizing: border-box;
+            transition: ease-in-out;
+        }
+        input[type="text"],
+        input[type="password"]:hover {
+            cursor: pointer;
+
         }
         button[type="submit"] {
             width: 100%;
@@ -70,8 +76,8 @@
             font-weight: bold;
         }
         button[type="submit"]:hover {
-            background-color: #3a637b;
-            padding: 15px;
+            background-color: #000000;
+            color: #ffffff;
             font-weight: bold;
         }
         .pass {
@@ -84,7 +90,7 @@
             transition: ease-in-out 0.3s;
         }
         .forgot-password:hover {
-            padding: 5px;
+            cursor: pointer;
         }
         .device-selection {
             display: flex;
@@ -98,6 +104,7 @@
         }
         .device-icon:hover {
             transform: scale(1.2);
+            transform: rotate(360deg);
         }
         .desktop-icon {
             color: #303336; /* blue color */
