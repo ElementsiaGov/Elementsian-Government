@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>News - Elementsia Government</title>
+  <title>Manifesto - Elementsia Government</title>
   <style>
     * {
       margin: 0;
@@ -148,7 +148,7 @@
     .hero {
       width: 100%;
       height: 60vh;
-      background: url('https://live.staticflickr.com/7460/16481425095_96dd2e059d_b.jpg') no-repeat center center/cover;
+      background: url('https://th.bing.com/th/id/R.22dfcd82ca70d8bf8b10265b49075042?rik=uLhk8ExHxlzI9Q&pid=ImgRaw&r=0') no-repeat center center/cover;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -189,7 +189,7 @@
       text-align: center;
     }
 
-    .section.news-section {
+    .section.manifesto {
       background-color: #f4f4f4;
     }
 
@@ -197,13 +197,13 @@
       font-size: 2.5rem;
       color: #608363;
       margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .section h1 {
-      font-size: 2.5rem;
-      color: #608363;
-      margin-top: 2rem;
-      margin-bottom: 1rem;
+    .section h2 i {
+      margin-right: 0.5rem;
     }
 
     .section p {
@@ -212,142 +212,120 @@
       max-width: 800px;
       margin: 0 auto;
       line-height: 1.6;
-    }
-
-    .search-bar {
       margin-bottom: 2rem;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      align-items: center;
     }
 
-    .search-bar input[type="text"] {
-      padding: 0.5rem 2rem 0.5rem 2.5rem;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      width: 300px;
-      background-image: url('https://img.icons8.com/ios-filled/50/000000/search.png');
-      background-position: 10px center;
-      background-repeat: no-repeat;
+    .timeline {
+      position: relative;
+      margin: 2rem auto;
+      padding: 2rem 0;
+      width: 90%;
+      max-width: 1200px;
     }
 
-    .search-bar select {
-      padding: 0.5rem;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      display: none;
-    }
-
-    .search-bar button {
-      padding: 0.5rem 1rem;
-      font-size: 1rem;
-      border: none;
-      border-radius: 5px;
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 6px;
       background-color: #608363;
-      color: #fff;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -3px;
     }
 
-    .search-bar button:hover {
-      background-color: #4b6086;
+    .timeline-item {
+      padding: 1rem 2rem;
+      position: relative;
+      width: 50%;
     }
 
-    .filter-btn {
-      display: none;
-      padding: 0.5rem 1rem;
-      font-size: 1rem;
-      border: none;
-      border-radius: 5px;
-      background-color: #608363;
-      color: #fff;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      right: -13px;
+      background-color: white;
+      border: 4px solid #608363;
+      top: 15px;
+      border-radius: 50%;
+      z-index: 1;
     }
 
-    .filter-btn:hover {
-      background-color: #4b6086;
+    .timeline-item-content {
+      padding: 1rem;
+      background-color: rgb(255, 255, 255);
+      position: relative;
+      border-radius: 15px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .timeline-item.left {
+      left: 0;
+    }
+
+    .timeline-item.left::before {
+      content: " ";
+      height: 0;
+      position: absolute;
+      top: 22px;
+      right: 30px;
+      border: medium solid white;
+      border-width: 10px 0 10px 10px;
+      border-color: transparent transparent transparent white;
+    }
+
+    .timeline-item.right {
+      left: 50%;
+    }
+
+    .timeline-item.right::before {
+      content: " ";
+      height: 0;
+      position: absolute;
+      top: 22px;
+      left: 30px;
+      border: medium solid white;
+      border-width: 10px 10px 10px 0;
+      border-color: transparent white transparent transparent;
+    }
+
+    .timeline-item.right::after {
+      left: -13px;
     }
 
     @media (max-width: 768px) {
-      .search-bar select {
-        display: none;
+      .timeline::after {
+        left: 31px;
+      }
+      .timeline {
+        font-size: 1300x;
       }
 
-      .filter-btn {
-        display: block;
+      .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
       }
-    }
 
-    .news-items {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-      margin-top: 2rem;
-    }
+      .timeline-item.left,
+      .timeline-item.right {
+        left: 0;
+      }
 
-    .news-item {
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      max-width: 300px;
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      position: relative;
-    }
+      .timeline-item.left::before,
+      .timeline-item.right::before {
+        left: 60px;
+        border: medium solid white;
+        border-width: 10px 10px 10px 0;
+        border-color: transparent rgba(255, 255, 255, 0.795) transparent transparent;
+      }
 
-    .news-item:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    }
-
-    .news-item img {
-      width: 100%;
-      height: auto;
-    }
-
-    .news-item-content {
-      padding: 1rem;
-      text-align: left;
-    }
-
-    .news-item-content h3 {
-      font-size: 1.5rem;
-      color: #608363;
-      margin-bottom: 0.5rem;
-    }
-
-    .news-item-content p {
-      font-size: 1rem;
-      color: #333;
-      line-height: 1.6;
-    }
-
-    .news-item-content a {
-      display: inline-block;
-      margin-top: 1rem;
-      color: #4b6086;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    .news-item-content a:hover {
-      color: #637560;
-    }
-
-    .news-item .date {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background-color: #608363;
-      color: #fff;
-      padding: 0.3rem 0.5rem;
-      border-radius: 5px;
-      font-size: 0.9rem;
+      .timeline-item.left::after,
+      .timeline-item.right::after {
+        left: 15px;
+      }
     }
 
     .footer {
@@ -491,6 +469,20 @@
       background-color: #637560;
       transform: scale(1.1);
     }
+    @media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem; /* Adjust the font size for mobile */
+  }
+
+  .section h2 {
+    font-size: 1.5rem; /* Adjust the font size for mobile */
+  }
+
+  .section p {
+    font-size: 1rem; /* Optional: Adjust the font size for paragraphs if needed */
+  }
+}
+
   </style>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -503,7 +495,7 @@
   <nav class="navbar">
     <div class="logo">
       <img src="https://i.ibb.co/3MtG5NQ/Coat-of-arms-png-removebg-preview.png" alt="Logo">
-      <span></span>
+      <span>.ele</span>
     </div>
     <ul class="menu">
       <li><a href="index.html">Home</a></li>
@@ -521,53 +513,76 @@
 
   <div class="hero">
     <div class="content">
-      <h1>News</h1>
+      <h1>Manifesto</h1>
       <p></p>
     </div>
   </div>
   <button id="scrollToTopBtn" onclick="topFunction()">&#8679;</button>
-  <div id="news" class="section news-section">
-    <h2>Latest News</h2>
- 
-    <div class="news-items" id="newsItems">
-      <div class="news-item" data-category="technology">
-        <div class="date">June 8, 2024</div>
-        <img src="https://www.publicdomainpictures.net/pictures/320000/velka/background-image.png" alt="News Image">
-        <div class="news-item-content">
-          <h3>Title of the News Article</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
-          <a href="#">Read More</a>
+  <div id="manifesto" class="section manifesto">
+    <div class="timeline">
+        <div class="timeline-item left">
+            <div class="timeline-item-content">
+                <h2><i class="fas fa-chart-line"></i> Economic Growth and Stability</h2>
+                <p>Our economic policies focus on creating a robust and resilient economy. We aim to attract investment, support local businesses, and create job opportunities that provide financial security for all citizens.</p>
+            </div>
         </div>
-      </div>
-      <div class="news-item" data-category="economy">
-        <div class="date">June 7, 2024</div>
-        <img src="https://www.publicdomainpictures.net/pictures/320000/velka/background-image.png" alt="News Image">
-        <div class="news-item-content">
-          <h3>Title of the News Article</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
-          <a href="#">Read More</a>
+        <div class="timeline-item right">
+            <div class="timeline-item-content">
+                <h2><i class="fas fa-handshake"></i> Peace and Stability</h2>
+                <p>We are dedicated to maintaining peace and stability in Elementsia, fostering a safe and secure environment for all citizens.</p>
+            </div>
         </div>
-      </div>
-      <div class="news-item" data-category="health">
-        <div class="date">June 6, 2024</div>
-        <img src="https://www.publicdomainpictures.net/pictures/320000/velka/background-image.png" alt="News Image">
-        <div class="news-item-content">
-          <h3>Title of the News Article</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
-          <a href="#">Read More</a>
+        <div class="timeline-item left">
+            <div class="timeline-item-content">
+                <h2><i class="fas fa-book"></i> Education for All</h2>
+                <p>Education is the foundation of our future. We are committed to providing high-quality education to all citizens, ensuring that every individual has the skills and knowledge needed to thrive in a rapidly changing world.</p>
+            </div>
         </div>
-      </div>
-      <div class="news-item" data-category="environment">
-        <div class="date">June 5, 2024</div>
-        <img src="https://www.publicdomainpictures.net/pictures/320000/velka/background-image.png" alt="News Image">
-        <div class="news-item-content">
-          <h3>Title of the News Article</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
-          <a href="#">Read More</a>
+        <div class="timeline-item right">
+            <div class="timeline-item-content">
+                <h2><i class="fas fa-users"></i> Teamwork and Nationalism</h2>
+                <p>We believe in the power of strong, connected communities. Our policies support community development initiatives that foster collaboration, cultural enrichment, and social cohesion.</p>
+            </div>
         </div>
-      </div>
+        <div class="timeline-item left">
+            <div class="timeline-item-content">
+                <h2><i class="fas fa-leaf"></i> Environmental Sustainability</h2>
+                <p>Protecting our natural environment is essential for future generations. We are committed to sustainable practices, reducing carbon emissions, and promoting renewable energy sources.</p>
+            </div>
+        </div>
+        <div class="timeline-item right">
+            <div class="timeline-item-content">
+                <h2><i class="fas fa-heart"></i> Healthcare and Well-being</h2>
+                <p>Access to quality healthcare is a fundamental right. We aim to provide comprehensive healthcare services that are affordable and accessible to all citizens, ensuring their physical and mental well-being.</p>
+            </div>
+        </div>
+        <div class="timeline-item left">
+            <div class="timeline-item-content">
+                <h2><i class="fas fa-globe"></i> Global Engagement</h2>
+                <p>We believe in fostering positive international relations. Our foreign policies promote peace, collaboration, and mutual respect with other nations, ensuring a stable and prosperous global community.</p>
+            </div>
+        </div>
+        <div class="timeline-item right">
+            <div class="timeline-item-content">
+                <h2><i class="fas fa-balance-scale"></i> Justice and Equality</h2>
+                <p>Ensuring justice and equality for all citizens is at the core of our governance. We are committed to upholding human rights, eliminating discrimination, and providing equal opportunities for everyone.</p>
+            </div>
+        </div>
+        <div class="timeline-item left">
+            <div class="timeline-item-content">
+                <h2><i class="fas fa-briefcase"></i> Innovation and Technology</h2>
+                <p>We strive to be at the forefront of technological advancement. Our policies encourage innovation, support research and development, and promote the integration of cutting-edge technologies in various sectors.</p>
+            </div>
+        </div>
+        <div class="timeline-item right">
+            <div class="timeline-item-content">
+                <h2><i class="fas fa-shield-alt"></i> National Security</h2>
+                <p>Protecting our nation and its citizens is a top priority. We are dedicated to maintaining a strong defense system, enhancing cybersecurity, and ensuring preparedness against any threats.</p>
+            </div>
+        </div>
     </div>
-  </div>
+</div>
+
 
   <footer class="footer">
     <div class="footer-container">
@@ -616,33 +631,6 @@
     function topFunction() {
       document.body.scrollTop = 0;
       document.documentElement.scrollTop = 0;
-    }
-
-    function filterNews() {
-      const searchInput = document.getElementById('searchInput').value.toLowerCase();
-      const filterSelect = document.getElementById('filterSelect').value;
-      const newsItems = document.querySelectorAll('.news-item');
-
-      newsItems.forEach(item => {
-        const title = item.querySelector('h3').textContent.toLowerCase();
-        const category = item.getAttribute('data-category');
-
-        if ((title.includes(searchInput) || searchInput === '') &&
-            (category === filterSelect || filterSelect === 'all')) {
-          item.style.display = 'block';
-        } else {
-          item.style.display = 'none';
-        }
-      });
-    }
-
-    function toggleFilter() {
-      const filterSelect = document.getElementById('filterSelect');
-      if (filterSelect.style.display === 'block') {
-        filterSelect.style.display = 'none';
-      } else {
-        filterSelect.style.display = 'block';
-      }
     }
   </script>
 </body>

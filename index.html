@@ -1,204 +1,732 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elementsian Government</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome CDN -->
-    <link rel="icon" href="https://media.discordapp.net/attachments/1101785167233826846/1193168985961795674/FAVICON.png?ex=65abbc36&is=65994736&hm=1b5fae5b263d01020c4474cda36cc0cfe83e7a614c971674589d3cb37984b533&=&format=webp&quality=lossless&width=80&height=80" type="image/png">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-image: url("https://media.discordapp.net/attachments/1233796295446237227/1238875277933809736/pexels-eberhardgross-1421903.jpg?ex=6640e003&is=663f8e83&hm=8b5c048d7a9129e524a6010e186388bf970dd13aaff3c510b0fc95793586c5cd&=&format=webp&width=656&height=437");
-            background-size: cover;
-            background-repeat: no-repeat;
-            position: relative;
-        }
-        .login-container {
-            background-color: rgba(255, 255, 255, 0.767);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 400px;
-            margin: 0 10px; /* Add margin left and right */
-            position: relative;
-            animation: floatUp 0.5s ease forwards; /* Animation */
-            opacity: 0; /* Initially hide */
-            transform: translateY(20px); /* Initially lower position */
-        }
-        @keyframes floatUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        h2 {
-            text-align: center;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        input[type="text"],
-        input[type="password"] {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 50px;
-            box-sizing: border-box;
-            transition: ease-in-out;
-        }
-        input[type="text"],
-        input[type="password"]:hover {
-            cursor: pointer;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home - Elementsian Government</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+    .footer-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.footer-icons a {
+  color: #fff;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.footer-icons a:hover {
+  color: #4b6086;
+}
+
+    .loader .circle {
+      border: 4px solid #e0e0e0;
+      border-top: 4px solid #608363; /* Green found on the page */
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+      margin-bottom: 20px;
+    }
+
+    .loader p {
+      font-size: 1.5rem;
+      color: #333;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(51, 51, 51, 0.8);
+      padding: 1rem 2rem;
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      top: 0;
+    }
+
+    .navbar .logo {
+      display: flex;
+      align-items: center;
+      font-size: 1.5rem;
+      color: #fff;
+    }
+
+    .navbar .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .navbar .menu {
+      display: flex;
+      list-style: none;
+      justify-content: center;
+      flex-grow: 1;
+    }
+
+    .navbar .menu li {
+      margin-left: 2rem;
+    }
+
+    .navbar .menu li a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 1rem;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .navbar .menu li a::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: #637560;
+      visibility: hidden;
+      transform: scaleX(0);
+      transition: all 0.3s ease-in-out;
+    }
+
+    .navbar .menu li a:hover::before {
+      visibility: visible;
+      transform: scaleX(1);
+    }
+
+    .navbar .menu li a:hover {
+      color: #4b6086;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .hamburger span {
+      height: 3px;
+      width: 25px;
+      background-color: #fff;
+      margin: 3px;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    @media (max-width: 768px) {
+      .navbar .menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        background-color: rgba(51, 51, 51, 0.8);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        animation: rollDown 0.5s ease-in-out forwards;
+      }
+
+      .navbar .menu.active {
+        display: flex;
+      }
+
+      .navbar .menu li {
+        padding: 1rem 0;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      @keyframes rollDown {
+        0% {
+          max-height: 0;
+          opacity: 0;
         }
-        button[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            background-color: #43718c;
-            color: #fff;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: ease-in-out 0.3s;
-            font-weight: bold;
+        100% {
+          max-height: 500px;
+          opacity: 1;
         }
-        button[type="submit"]:hover {
-            background-color: #000000;
-            color: #ffffff;
-            font-weight: bold;
-        }
-        .pass {
-            display: none;
-        }
-        .forgot-password {
-            color: rgb(0, 0, 0);
-            text-decoration: none;
-            cursor: pointer;
-            transition: ease-in-out 0.3s;
-        }
-        .forgot-password:hover {
-            cursor: pointer;
-        }
-        .device-selection {
-            display: flex;
-            justify-content: space-around;
-            margin-bottom: 15px;
-        }
-        .device-icon {
-            font-size: 30px;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-        .device-icon:hover {
-            transform: scale(1.2);
-            transform: rotate(360deg);
-        }
-        .desktop-icon {
-            color: #303336; /* blue color */
-        }
-        .mobile-icon {
-            color: #303336; /* green color */
-        }
-        .discord-icon {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            cursor: pointer;
-            color: #bbb; /* Lighter color */
-            transition: ease-in-out 0.2s;
-        }
-        .discord-icon:hover {
-            transform: scale(1.2);
-        }
-    </style>
+      }
+    }
+
+    .hero {
+      width: 100%;
+      height: 60vh; /* Reduced height */
+      background: url('https://th.bing.com/th/id/R.22dfcd82ca70d8bf8b10265b49075042?rik=uLhk8ExHxlzI9Q&pid=ImgRaw&r=0') no-repeat center center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+      text-decoration: underline;
+    }
+
+    .hero .content {
+      padding: 2rem;
+      border-radius: 10px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      max-width: 600px;
+    }
+    .section {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.section h2 {
+  font-size: 2.5rem;
+  color: #608363; /* Royal blue */
+  margin-bottom: 1rem;
+}
+
+.section p {
+  font-size: 1.2rem;
+  color: #333;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.about {
+  background-color: #f7f7f7;
+}
+
+.manifesto {
+  background-color: #e0e0e0;
+}
+
+.news {
+  background-color: #f0f0f0;
+}
+
+.contact {
+  background-color: #d0d0d0;
+}
+.news-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.news-article {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-width: 300px;
+  text-align: left;
+  transition: transform 0.3s;
+}
+
+.news-article:hover {
+  transform: translateY(-10px);
+}
+
+.news-article img {
+  width: 100%;
+  height: auto;
+}
+
+.news-article h3 {
+  font-size: 1.5rem;
+  color: #608363; /* Royal blue */
+  margin: 1rem;
+}
+
+.news-article p {
+  font-size: 1rem;
+  color: #333;
+  margin: 0 1rem 1rem 1rem;
+}
+
+.news-article .read-more {
+  display: inline-block;
+  margin: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #577066; /* Royal blue */
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.news-article .read-more:hover {
+  background-color: #314b8a; /* Darker shade of royal blue */
+}
+
+@media (max-width: 768px) {
+  .news-article {
+    max-width: 100%;
+  }
+}
+.manifesto-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.manifesto-item {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-width: 300px;
+  text-align: center;
+  padding: 2rem;
+  transition: transform 0.3s;
+}
+
+.manifesto-item:hover {
+  transform: translateY(-10px);
+}
+
+.manifesto-item img {
+  width: 50px; /* Reduced size */
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.manifesto-item h3 {
+  font-size: 1.5rem;
+  color: #608363; /* Royal blue */
+  margin-bottom: 1rem;
+}
+
+.manifesto-item p {
+  font-size: 1rem;
+  color: #333;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .manifesto-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .manifesto-item {
+    max-width: 100%;
+  }
+}
+/* Cabinet Section */
+.cabinet-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.cabinet-member {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  text-align: center;
+  padding: 2rem;
+}
+
+.cabinet-member img {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.cabinet-member h3 {
+  font-size: 1.5rem;
+  color: #608363; /* Royal blue */
+}
+
+.cabinet-member p {
+  font-size: 1rem;
+  color: #333;
+}
+
+/* King Section */
+.king-message {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.king-message img {
+  border-radius: 10px;
+  width: 300px;
+  height: auto;
+}
+
+.message-content {
+  max-width: 600px;
+  text-align: center;
+}
+
+.message-content p {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.message-content h3 {
+  font-size: 1.5rem;
+  color:#577066 ; /* Royal blue */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .cabinet-container,
+  .king-message {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cabinet-member,
+  .message-content {
+    max-width: 100%;
+  }
+
+  .king-message img {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+.footer {
+  background-color: rgba(55, 71, 55, 0.8);
+  color: #fff;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.footer-logo img {
+  height: 40px;
+  margin-right: 10px;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #4b6086;
+}
+
+.footer-contact p {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+#scrollToTopBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+  background-color: #4b6086;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  padding: 15px;
+  cursor: pointer;
+  font-size: 18px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#scrollToTopBtn:hover {
+  background-color: #637560;
+  transform: scale(1.1);
+}
+
+  </style>
 </head>
 <body>
-    <div class="login-container">
-      <h2>Login</h2>
-      <p>Hi there! This webpage has been blocked for all Aros Elyuim Members by Elementsia, <a href="why.html" id="learn-more-link">learn why this happened</a></p>
-        <form id="loginForm" onsubmit="return validateLogin()">
-            <label for="username">Username:</label><br>
-            <input type="text" id="username" name="username" required><br><br>
-
-            <label for="pin">PIN:</label><br>
-            <input type="password" id="pin" name="pin" required><br><br>
-
-            <div class="device-selection">
-                <i class="fas fa-desktop device-icon desktop-icon" onclick="selectDevice('desktop')"></i>
-                <i class="fas fa-mobile-alt device-icon mobile-icon" onclick="selectDevice('mobile')"></i>
-            </div>
-
-            <button type="submit">Login</button>
-        </form>
-        <p class="pass" id="forgotPasswordText">If you don't have an account name or password, or if you've forgotten your password, please check your direct messages for the information sent by Elementsia, or make a submission in the Axiom submission page.</p>
-        <p class="forgot-password" id="forgotPasswordLink">Forgot Password?</p>
+  <div class="loader">
+    <div class="circle"></div>
+    <p>Loading...</p>
+  </div>
+  
+  <nav class="navbar">
+    <div class="logo">
+      <img src="https://i.ibb.co/3MtG5NQ/Coat-of-arms-png-removebg-preview.png" alt="Logo">
+      <span></span>
     </div>
-    
-    <a href="https://discord.gg/3Jca45mffG" class="discord-icon"><i class="fab fa-discord fa-2x"></i></a> <!-- Font Awesome Discord icon -->
-    
-    <script>
-        var userAccounts = {
-            "Shantara": "7532",
-            "El": "2421",
-            "EARLY ACCESS ACCOUNT 03": "5328",
-            "EARLY ACCESS ACCOUNT 02": "7972",
-        };
+    <ul class="menu">
+      <li><a href="#home">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="manifesto.html">Manifesto</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
 
-        var passParagraph = document.getElementById("forgotPasswordText");
-        var passLink = document.getElementById("forgotPasswordLink");
+  <div class="hero">
+    <div class="content">
+      <h1>Home</h1>
+      <p></p>
+    </div>
+  </div>
 
-        passLink.addEventListener("click", function() {
-            passParagraph.style.display = passParagraph.style.display === "none" ? "block" : "none";
-        });
+  <div id="about" class="section about">
+    <button id="scrollToTopBtn" onclick="topFunction()">&#8679;</button>
 
-        function selectDevice(device) {
-            document.querySelectorAll('.device-icon').forEach(icon => {
-                icon.classList.remove('desktop-icon');
-                icon.classList.remove('mobile-icon');
-            });
+    <h2>About Us</h2>
+    <p>We have a rich history of over 800 years of governance, focusing on transparency and love for the people.</p>
+    <p>Our nation's journey began in the early 13th century, marked by a commitment to justice and equality. Over the centuries, we have evolved, embracing modern values while preserving our cherished traditions.</p>
+    <p>Our government is dedicated to ensuring the welfare of all citizens, fostering an environment where innovation and culture thrive. We believe in the power of community and the importance of each individual's contribution to our collective success.</p>
+    <p>Our policies are rooted in a deep respect for human rights and the natural environment, ensuring sustainable development for future generations. We strive to be a beacon of democracy, inspiring other nations with our steadfast dedication to fairness and integrity.</p>
+    <p>Join us as we continue to build a brighter future, where every voice is heard, and every citizen has the opportunity to prosper.</p>
+  </div>
+  
 
-            if (device === 'desktop') {
-                document.querySelector('.desktop-icon').classList.add('desktop-icon');
-            } else if (device === 'mobile') {
-                document.querySelector('.mobile-icon').classList.add('mobile-icon');
-            }
-        }
+  <div id="manifesto" class="section manifesto">
+    <h2>Our Manifesto</h2>
+    <div class="manifesto-container">
+      <div class="manifesto-item">
+        <img src="https://i.ibb.co/fYh2zkn/pie-chart.gif" alt="Economic Growth Icon" class="animated-icon">
+        <h3>Economic Growth</h3>
+        <p>Our policies focus on fostering economic growth that benefits all sectors of society.</p>
+      </div>
+      <div class="manifesto-item">
+        <img src="https://i.ibb.co/h1nZHTn/white-flag.gif" alt="Peace and Stability Icon" class="animated-icon">
+        <h3>Peace and Stability</h3>
+        <p>We are committed to maintaining peace and stability within our nation and in our relations with others.</p>
+      </div>
+      <div class="manifesto-item">
+        <img src="https://i.ibb.co/ch2pq4W/meeting.gif" alt="Education Icon" class="animated-icon">
+        <h3>Education</h3>
+        <p>We aim to provide high-quality education to all citizens, ensuring equal opportunities for learning and growth.</p>
+      </div>
+      <div class="manifesto-item">
+        <img src="https://i.ibb.co/b7kZrJs/teamwork.gif" alt="Teamwork and Nationalism Icon" class="animated-icon">
+        <h3>Teamwork and Nationalism</h3>
+        <p>We promote teamwork and a strong sense of nationalism to build a united and prosperous nation.</p>
+      </div>
+    </div>
+  </div>
+  <div id="news" class="section news">
+    <h2>Latest News</h2>
+    <div class="news-container">
+      <div class="news-article">
+        <img src="https://via.placeholder.com/300" alt="News Image 1">
+        <h3>Parliament Passes New Education Bill</h3>
+        <p>The parliament has passed a new education bill that aims to reform the current education system, providing better resources and opportunities for students...</p>
+        <a href="#" class="read-more">Read More</a>
+      </div>
+      <div class="news-article">
+        <img src="https://via.placeholder.com/300" alt="News Image 2">
+        <h3>Healthcare Reform Debate Heats Up</h3>
+        <p>The debate over the proposed healthcare reform bill continues to heat up in parliament, with ministers and citizens voicing their opinions...</p>
+        <a href="#" class="read-more">Read More</a>
+      </div>
+      <div class="news-article">
+        <img src="https://via.placeholder.com/300" alt="News Image 3">
+        <h3>Prime Minister's Address on Foreign Policy</h3>
+        <p>Prime Minister Jan van Dijk addressed the nation on the current foreign policy stance, outlining key strategies and future plans...</p>
+        <a href="#" class="read-more">Read More</a>
+      </div>
+    </div>
+  </div>
 
-        function validateLogin() {
-            var username = document.getElementById("username").value;
-            var pin = document.getElementById("pin").value;
-            var selectedDevice = document.querySelector('.desktop-icon') ? 'desktop' : 'mobile';
+  <div id="cabinet" class="section cabinet">
+    <h2>Meet Our Cabinet</h2>
+    <div class="cabinet-container">
+      <div class="cabinet-member">
+        <img src="https://i.ibb.co/5GZWw9C/Min1.png" alt="Cabinet Member 1">
+        <h3>Jan van Dijk</h3>
+        <p>Prime Minister</p>
+      </div>
+      <div class="cabinet-member">
+        <img src="https://i.ibb.co/wLqgVst/image.png" alt="Cabinet Member 2">
+        <h3>Annemieke de Jong</h3>
+        <p>Minister of Finance</p>
+      </div>
+      <div class="cabinet-member">
+        <img src="https://i.ibb.co/sw4KHBt/Min3.png" alt="Cabinet Member 3">
+        <h3>Sofie Vannte Graant</h3>
+        <p>Minister of Foreign Affairs</p>
+      </div>
+      <div class="cabinet-member">
+        <img src="https://i.ibb.co/x67w2fT/image.png" alt="Cabinet Member 4">
+        <h3>Patroo van der Berg</h3>
+        <p>Minister of Health</p>
+      </div>
+    </div>
+  </div>
+  
 
-            if (userAccounts.hasOwnProperty(username)) {
-                if (userAccounts[username] === pin) {
-                    if (selectedDevice === "desktop") {
-                        window.location.href = "main.html";
-                    } else if (selectedDevice === "mobile") {
-                        window.location.href = "main.html";
-                    }
-                    return false;
-                } else {
-                    alert("Incorrect PIN. Please try again.");
-                    return false;
-                }
-            } else {
-                alert("Username not found.");
-                return false;
-            }
-        }
-    </script>
+  <div id="king" class="section king">
+    <h2>A Word from Our King</h2>
+    <div class="king-message">
+      <img src="https://via.placeholder.com/300" alt="King's Portrait">
+      <div class="message-content">
+        <p>As your king, I am committed to leading our nation with integrity, compassion, and dedication. Together, we will continue to build a prosperous and harmonious society. I thank you all for your unwavering support and trust.</p>
+        <h3>King Vertien Gustav</h3>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <img src="https://i.ibb.co/3MtG5NQ/Coat-of-arms-png-removebg-preview.png" alt="Logo">
+        <span></span>
+      </div>
+      <div class="footer-contact">
+        <p>12 Tertal St, Elementsia, EL 5689</p>
+        <p>Email: info@elementsia.gov</p>
+        <p>Phone: (123) 456-7890</p>
+        <div class="footer-icons">
+          <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.querySelector('.menu');
+      const hamburger = document.querySelector('.hamburger');
+      menu.classList.toggle('active');
+      hamburger.classList.toggle('active');
+    }
+
+    window.addEventListener('load', () => {
+      const loader = document.querySelector('.loader');
+      loader.classList.add('hidden');
+    });
+    let scrollToTopBtn = document.getElementById("scrollToTopBtn");
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    scrollToTopBtn.style.display = "block";
+  } else {
+    scrollToTopBtn.style.display = "none";
+  }
+}
+
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
+  </script>
+
+  <style>
+    .loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+  </style>
 </body>
 </html>
