@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements - Elementsian Government</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="loader.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+.achievements-section {
+    padding: 40px 20px;
+}
+
+.achievement-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.achievement-card {
+    width: calc(100% / 5);/* Fixed width to ensure five cards per row */
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin: 10px;
+}
+
+.achievement-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.achievement-card i {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.achievement-card h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.achievement-card p {
+    font-size: 1em;
+}
+
+/* Different background colors for each card */
+.achievement-card:nth-child(1) { background-color: #72a374; } /* Green */
+.achievement-card:nth-child(2) { background-color: #678dac; } /* Blue */
+.achievement-card:nth-child(3) { background-color: #b8986a; } /* Orange */
+.achievement-card:nth-child(4) { background-color: #9b77a1; } /* Purple */
+.achievement-card:nth-child(5) { background-color: #916966; } /* Red */
+.achievement-card:nth-child(6) { background-color: #a19d76; } /* Yellow */
+.achievement-card:nth-child(7) { background-color: #619da5; } /* Cyan */
+.achievement-card:nth-child(8) { background-color: #c48499; } /* Pink */
+.achievement-card:nth-child(9) { background-color: #889e6e; } /* Light Green */
+.achievement-card:nth-child(10) { background-color: #91817b; } /* Brown */
+.achievement-card:nth-child(11) { background-color: #585d75; } /* Indigo */
+.achievement-card:nth-child(12) { background-color: #85959c; } /* Blue Grey */
+.achievement-card:nth-child(13) { background-color: #e0ce98; } /* Amber */
+.achievement-card:nth-child(14) { background-color: #acb185; } /* Lime */
+.achievement-card:nth-child(15) { background-color: #b88c7e; } /* Deep Orange */
+.achievement-card:nth-child(16) { background-color: #8676a1; } /* Deep Purple */
+.achievement-card:nth-child(17) { background-color: #7ba18f; } /* Emerald */
+.achievement-card:nth-child(18) { background-color: #b66363; } /* Crimson */
+.achievement-card:nth-child(19) { background-color: #965f75; } /* Cerise */
+.achievement-card:nth-child(20) { background-color: #ad5d78; } /* Hot Pink */
+.achievement-card:nth-child(21) { background-color: #bb7a66; } /* Coral */
+.achievement-card:nth-child(22) { background-color: #88a0ac; } /* Cool Grey */
+.achievement-card:nth-child(23) { background-color: #e9cd79; } /* Golden Yellow */
+.achievement-card:nth-child(24) { background-color: #6baaa4; } /* Teal */
+.achievement-card:nth-child(25) { background-color: #df9090; } /* Red Orange */
+.achievement-card:nth-child(26) { background-color: #dc9ee7; } /* Electric Purple */
+.achievement-card:nth-child(27) { background-color: #b095f8; } /* Vivid Violet */
+.achievement-card:nth-child(28) { background-color: #a0d6c9; } /* Turquoise */
+.achievement-card:nth-child(29) { background-color: #9c687b; } /* Ruby */
+.achievement-card:nth-child(30) { background-color: #7ea55e; } /* Bright Green */
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .achievement-card {
+        flex: 0 1 calc(33.333% - 40px);
+    }
+}
+
+@media (max-width: 768px) {
+    .achievement-card {
+        flex: 0 1 calc(50% - 40px);
+    }
+}
+
+@media (max-width: 480px) {
+    .achievement-card {
+        flex: 0 1 calc(100% - 40px);
+    }
+}
+.button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: white;
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            border: #666 solid 2px;
+            border-radius: 25px;
+            transition: 0.3s ease-in-out;
+        }
+
+        .button:hover {
+            background-color: #4072a3;
+            border: 2px solid #4072a3;
+            padding: 10px 20px;
+            color: white;
+        }
+        .financial-section {
+    padding: 40px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.financial-content {
+    max-width: 60%;
+}
+
+.financial-content h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.financial-content p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #333;
+}
+
+.financial-image {
+    width: 250px;
+    height: auto;
+    margin-right: 160px;
+}
+
+.financial-image img {
+    width: 100%;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+    </style>
+</head>
+<body>
+    <div id="loader-container">
+        <div class="custom-loader"></div>
+        <div class="loader-footer">
+            <img src="https://i.ibb.co/CBpzkT9/Elementsian-flag.png" alt="Flag" class="tiny-flag">
+            <p>&copy; 2024 Elementsian Government</p>
+        </div>
+    </div>
+    <div id="content" style="display: none;">
+        <div class="page-wrapper">
+            <div class="hero-image" style="background-image: url('https://i.ibb.co/Ln0xZHw/ELEMENTSIA-6.png'); height: 470px; background-size: cover; background-position: center;"></div>
+
+            <nav class="navbar">
+                <div class="navbar-container">
+                    <div class="navbar-logo">
+                        <img src="https://i.ibb.co/CBpzkT9/Elementsian-flag.png" alt="Flag" class="flag-icon">
+                        <span class="navbar-title">Elementsian Government</span>
+                    </div>
+                    <ul class="navbar-menu" id="navbar-menu">
+                        <li class="navbar-item">
+                            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                        </li>
+                        <li class="navbar-item">
+                            <a href="#"><i class="fas fa-info-circle"></i> About</a>
+                            <div class="dropdown-menu">
+                                <a href="history.html"><i class="fas fa-history"></i> History</a>
+                                <a href="government-structure.html"><i class="fas fa-landmark"></i> Government Structure</a>
+                                <a href="manifesto.html"><i class="fas fa-bullseye"></i> Vision and Mission</a>
+                                <a href="key-figures.html"><i class="fas fa-user-tie"></i> Key Figures</a>
+                                <a href="achievements.html"><i class="fas fa-trophy"></i> Achievements</a>
+                                <a href="financial-overview.html"><i class="fas fa-chart-line"></i> Financial Overview</a>
+                            </div>
+                        </li>
+                        <li class="navbar-item">
+                            <a href="#"><i class="fas fa-concierge-bell"></i> Services</a>
+                            <div class="dropdown-menu">
+                                <a href="public-services.html"><i class="fas fa-people-carry"></i> Public Services</a>
+                                <a href="online-services.html"><i class="fas fa-laptop"></i> Online Services</a>
+                                <a href="emergency-services.html"><i class="fas fa-ambulance"></i> Emergency Services</a>
+                                <a href="health-services.html"><i class="fas fa-hospital"></i> Health Services</a>
+                                <a href="education-services.html"><i class="fas fa-chalkboard-teacher"></i> Education Services</a>
+                            </div>
+                        </li>
+                        <li class="navbar-item">
+                            <a href="#"><i class="fas fa-phone"></i> Contact</a>
+                            <div class="dropdown-menu">
+                                <a href="contact-information.html"><i class="fas fa-address-book"></i> Contact Information</a>
+                                <a href="feedback-form.html"><i class="fas fa-comment-dots"></i> Feedback Form</a>
+                                <a href="office-locations.html"><i class="fas fa-map-marker-alt"></i> Office Locations</a>
+                                <a href="faq.html"><i class="fas fa-question-circle"></i> Frequently Asked Questions</a>
+                            </div>
+                        </li>
+                        <li class="navbar-item">
+                            <a href="vote.html"><i class="fas fa-vote-yea"></i> Am I Eligible to Vote?</a>
+                            <div class="dropdown-menu">
+                                <a href="eligibility-requirements.html"><i class="fas fa-check-circle"></i> Eligibility Requirements</a>
+                                <a href="how-to-register.html"><i class="fas fa-pen"></i> How to Register</a>
+                                <a href="voting-locations.html"><i class="fas fa-map"></i> Voting Locations</a>
+                                <a href="important-dates.html"><i class="fas fa-calendar-alt"></i> Important Dates</a>
+                                <a href="vote-faq.html"><i class="fas fa-question"></i> FAQ</a>
+                            </div>
+                        </li>
+                        <li class="navbar-item departments">
+                            <a href="#"><i class="fas fa-building"></i> Departments</a>
+                            <div class="dropdown-menu">
+                                <a href="education-department.html"><i class="fas fa-school"></i> Education</a>
+                                <a href="science-technology-department.html"><i class="fas fa-flask"></i> Science and Technology</a>
+                                <a href="natural-resources-department.html"><i class="fas fa-tree"></i> Natural Resources</a>
+                                <a href="public-communications-department.html"><i class="fas fa-bullhorn"></i> Public Communications</a>
+                                <a href="emergency-services-department.html"><i class="fas fa-life-ring"></i> Emergency Services</a>
+                                <a href="health-department.html"><i class="fas fa-heartbeat"></i> Health</a>
+                                <a href="administration-department.html"><i class="fas fa-cogs"></i> Administration</a>
+                                <a href="environmental-affairs-department.html"><i class="fas fa-leaf"></i> Environmental Affairs</a>
+                                <a href="transportation-department.html"><i class="fas fa-bus"></i> Transportation</a>
+                                <a href="justice-department.html"><i class="fas fa-gavel"></i> Justice</a>
+                                <a href="energy-department.html"><i class="fas fa-bolt"></i> Energy</a>
+                                <a href="agriculture-department.html"><i class="fas fa-tractor"></i> Agriculture</a>
+                                <a href="space-exploration-department.html"><i class="fas fa-rocket"></i> Space Administration and Exploration</a>
+                                <a href="housing-urban-development-department.html"><i class="fas fa-home"></i> Housing and Urban Development</a>
+                                <a href="defense-department.html"><i class="fas fa-shield-alt"></i> Defense</a>
+                                <a href="commerce-department.html"><i class="fas fa-store"></i> Commerce</a>
+                                <a href="international-aid-department.html"><i class="fas fa-hands-helping"></i> International Aid</a>
+                                <a href="cultural-affairs-department.html"><i class="fas fa-theater-masks"></i> Cultural Affairs</a>
+                                <a href="international-relations-department.html"><i class="fas fa-globe"></i> International Relations</a>
+                                <a href="additional-projects.html"><i class="fas fa-project-diagram"></i> Additional Projects</a>
+                                <a href="reserve-fund.html"><i class="fas fa-piggy-bank"></i> Reserve Fund</a>
+                                <a href="trade-department.html"><i class="fas fa-handshake"></i> Trade</a>
+                                <a href="social-services-department.html"><i class="fas fa-users"></i> Social Services</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="main-content">
+                    <section class="financial-section">
+                        <div class="financial-content">
+                            <h2>- Where we govern</h2>
+                            <p>The unparalleled success of the Elementsian government is deeply rooted in the spirit of teamwork and collaboration that permeates every level of our administration. Our dedicated officials and staff work cohesively across various departments, sharing a common vision and mutual respect for each other's roles. This unified approach ensures that our policies and initiatives are not only well-coordinated but also effectively implemented, leading to remarkable achievements in education, healthcare, environmental conservation, and beyond. The collective effort of our government team is the driving force behind Elementsia's continuous progress and prosperity, making us a leader in innovation, economic stability, and social development within Axiom.</p>
+                            <a href="about.html" class="button">Learn More</a> <!-- Moved button here -->
+                        </div>
+                        <div class="financial-image">
+                            <img src="https://i.ibb.co/552PFvB/Minister-of-Interior.png" alt="Financial Overview">
+                        </div>
+                    </section>
+                </div>
+                
+                <section class="achievements-section">
+                    <h2 style="font-size: 2em;">- Where we govern</h2>
+                    
+                    <div class="achievement-container">
+                        <div class="achievement-card">
+                            <i class="fas fa-trophy"></i>
+                            <h3>Top Education System</h3>
+                            <p>Elementsia ranks first in education quality compared to all nations in Axiom.</p>
+                        </div>
+                        <div class="achievement-card">
+                            <i class="fas fa-heartbeat"></i>
+                            <h3>Advanced Healthcare</h3>
+                            <p>Our healthcare system is the most advanced, providing the best services in Axiom.</p>
+                        </div>
+                        <div class="achievement-card">
+                            <i class="fas fa-leaf"></i>
+                            <h3>Environmental Conservation</h3>
+                            <p>Elementsia leads in environmental conservation efforts across Axiom.</p>
+                        </div>
+                        <div class="achievement-card">
+                            <i class="fas fa-rocket"></i>
+                            <h3>Space Exploration</h3>
+                            <p>Our space exploration program is unmatched, setting new records in Axiom.</p>
+                        </div>
+                        <div class="achievement-card">
+                            <i class="fas fa-briefcase"></i>
+                            <h3>Economic Growth</h3>
+                            <p>Elementsia boasts the highest economic growth rate in Axiom.</p>
+                        </div>
+                        <div class="achievement-card">
+                            <i class="fas fa-lightbulb"></i>
+                            <h3>Innovation Leader</h3>
+                            <p>Elementsia is the leading nation in technological innovations and startups.</p>
+                        </div>
+                        <div class="achievement-card">
+                            <i class="fas fa-university"></i>
+                            <h3>Top Universities</h3>
+                            <p>Home to the best universities in Axiom, producing top-tier graduates.</p>
+                        </div>
+                        <div class="achievement-card">
+                            <i class="fas fa-water"></i>
+                            <h3>Clean Water Access</h3>
+                            <p>100% of our population has access to clean and safe drinking water.</p>
+                        </div>
+                        <div class="achievement-card">
+                            <i class="fas fa-tree"></i>
+                            <h3>Forestation Efforts</h3>
+                            <p>Leading in reforestation and green initiatives among all Axiom nations.</p>
+                        </div>
+                        <div class="achievement-card">
+                            <i class="fas fa-solar-panel"></i>
+                            <h3>Renewable Energy</h3>
+                            <p>Elementsia is at the forefront of renewable energy usage and production.</p>
+                        </div>
+                        <div class="achievement-card">
+                            <i class="fas fa-chart-line"></i>
+                            <h3>Financial Profit</h3>
+                            <p>Elementsia achieved a profit of K$101,072,825,188.00 for this financial year.</p>
+                        </div>
+                        <div class="achievement-card">
+                            <i class="fas fa-balance-scale"></i>
+                            <h3>Low Crime Rates</h3>
+                            <p>Elementsia has one of the lowest crime rates in Axiom, ensuring safety for all citizens.</p>
+                        </div>
+                        <div class="achievement-card">
+                            <i class="fas fa-users"></i>
+                            <h3>High Employment Rates</h3>
+                            <p>Our employment rates are among the highest in Axiom, with numerous job opportunities.</p>
+                        </div>
+                        <div class="achievement-card">
+                            <i class="fas fa-plane"></i>
+                            <h3>Top Tourist Destination</h3>
+                            <p>Elementsia is a top tourist destination, attracting millions of visitors annually.</p>
+                        </div>
+                        <div class="achievement-card">
+                            <i class="fas fa-graduation-cap"></i>
+                            <h3>High Literacy Rates</h3>
+                            <p>Elementsia boasts one of the highest literacy rates in Axiom.</p>
+                        </div>
+                        <div class="achievement-card">
+                            <i class="fas fa-award"></i>
+                            <h3>Sports Achievements</h3>
+                            <p>Our athletes have won numerous awards and medals in international sports competitions.</p>
+                        </div>
+                        <div class="achievement-card">
+                            <i class="fas fa-city"></i>
+                            <h3>Urban Development</h3>
+                            <p>Our cities are well-developed, offering excellent infrastructure and living conditions.</p>
+                        </div>
+                        <div class="achievement-card">
+                            <i class="fas fa-globe"></i>
+                            <h3>Global Diplomacy</h3>
+                            <p>Elementsia is a leader in global diplomacy, fostering strong international relations.</p>
+                        </div>
+                        <div class="achievement-card">
+                            <i class="fas fa-seedling"></i>
+                            <h3>Green Spaces</h3>
+                            <p>Elementsia has abundant green spaces and parks, promoting a healthy environment.</p>
+                        </div>
+                        <div class="achievement-card">
+                            <i class="fas fa-car"></i>
+                            <h3>Efficient Transportation</h3>
+                            <p>Our public transportation system is one of the most efficient in Axiom.</p>
+                        </div>
+                        <div class="achievement-card">
+                            <i class="fas fa-house-damage"></i>
+                            <h3>Disaster Preparedness</h3>
+                            <p>Elementsia is well-prepared for natural disasters, ensuring minimal impact on citizens.</p>
+                        </div>
+                        <div class="achievement-card">
+                            <i class="fas fa-hand-holding-heart"></i>
+                            <h3>Community Support</h3>
+                            <p>Strong community support and social services are provided for all citizens.</p>
+                        </div>
+                        <div class="achievement-card">
+                            <i class="fas fa-microchip"></i>
+                            <h3>Tech Advancement</h3>
+                            <p>Elementsia is at the cutting edge of technology, driving innovation across Axiom.</p>
+                        </div>
+                        <div class="achievement-card">
+                            <i class="fas fa-archway"></i>
+                            <h3>Cultural Heritage</h3>
+                            <p>Rich cultural heritage and history are preserved and celebrated in Elementsia.</p>
+                        </div>
+                        <div class="achievement-card">
+                            <i class="fas fa-hand-holding-usd"></i>
+                            <h3>Economic Stability</h3>
+                            <p>Elementsia maintains strong economic stability, ensuring prosperity for all.</p>
+                        </div>
+                        <div class="achievement-card">
+                            <i class="fas fa-handshake"></i>
+                            <h3>International Aid</h3>
+                            <p>Leading provider of international aid and support to other nations in Axiom.</p>
+                        </div>
+                        <div class="achievement-card">
+                            <i class="fas fa-grin-stars"></i>
+                            <h3>High Quality of Life</h3>
+                            <p>Citizens of Elementsia enjoy a high quality of life with excellent amenities.</p>
+                        </div>
+                    </div>
+                </section>
+                
+                
+            </div>
+
+            <footer class="site-footer">
+                <div class="footer-content">
+                    <img src="https://i.ibb.co/CBpzkT9/Elementsian-flag.png" alt="Flag" class="footer-flag">
+                    <p>&copy; 2024 Elementsian Government. All rights reserved.</p>
+                    <ul class="footer-links">
+                        <li><a href="terms.html"><i class="fas fa-file-alt"></i> Terms of Use</a></li>
+                        <li><a href="privacy.html"><i class="fas fa-user-shield"></i> Privacy Policy</a></li>
+                        <li><a href="accessibility.html"><i class="fas fa-universal-access"></i> Accessibility</a></li>
+                        <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const loader = document.getElementById('loader-container');
+            const content = document.getElementById('content');
+
+            setTimeout(() => {
+                loader.style.display = 'none';
+                content.style.display = 'block';
+            }, 2000); // Adjust this value for loader duration
+        });
+    </script>
+</body>
+</html>

@@ -1,637 +1,586 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Manifesto - Elementsia Government</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-    }
-
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: rgba(51, 51, 51, 0.8);
-      padding: 1rem 2rem;
-      position: fixed;
-      width: 100%;
-      z-index: 1000;
-      top: 0;
-    }
-
-    .navbar .logo {
-      display: flex;
-      align-items: center;
-      font-size: 1.5rem;
-      color: #fff;
-    }
-
-    .navbar .logo img {
-      height: 40px;
-      margin-right: 10px;
-    }
-
-    .navbar .menu {
-      display: flex;
-      list-style: none;
-      justify-content: center;
-      flex-grow: 1;
-    }
-
-    .navbar .menu li {
-      margin-left: 2rem;
-    }
-
-    .navbar .menu li a {
-      text-decoration: none;
-      color: #fff;
-      font-size: 1rem;
-      position: relative;
-      transition: color 0.3s ease;
-    }
-
-    .navbar .menu li a::before {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 2px;
-      bottom: -5px;
-      left: 0;
-      background-color: #637560;
-      visibility: hidden;
-      transform: scaleX(0);
-      transition: all 0.3s ease-in-out;
-    }
-
-    .navbar .menu li a:hover::before {
-      visibility: visible;
-      transform: scaleX(1);
-    }
-
-    .navbar .menu li a:hover {
-      color: #4b6086;
-    }
-
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .hamburger span {
-      height: 3px;
-      width: 25px;
-      background-color: #fff;
-      margin: 3px;
-      border-radius: 5px;
-      transition: 0.3s;
-    }
-
-    .hamburger.active span:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 5px);
-    }
-
-    .hamburger.active span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .hamburger.active span:nth-child(3) {
-      transform: rotate(-45deg) translate(5px, -5px);
-    }
-
-    @media (max-width: 768px) {
-      .navbar .menu {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        text-align: center;
-        background-color: rgba(51, 51, 51, 0.8);
-        position: absolute;
-        top: 100%;
-        left: 0;
-        animation: rollDown 0.5s ease-in-out forwards;
-      }
-
-      .navbar .menu.active {
-        display: flex;
-      }
-
-      .navbar .menu li {
-        padding: 1rem 0;
-      }
-
-      .hamburger {
-        display: flex;
-      }
-
-      @keyframes rollDown {
-        0% {
-          max-height: 0;
-          opacity: 0;
-        }
-        100% {
-          max-height: 500px;
-          opacity: 1;
-        }
-      }
-    }
-
-    .hero {
-      width: 100%;
-      height: 60vh;
-      background: url('https://th.bing.com/th/id/R.22dfcd82ca70d8bf8b10265b49075042?rik=uLhk8ExHxlzI9Q&pid=ImgRaw&r=0') no-repeat center center/cover;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #fff;
-      text-align: center;
-      text-decoration: underline;
-    }
-
-    .hero .content {
-      padding: 2rem;
-      border-radius: 10px;
-      animation: fadeIn 2s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      0% {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-
-    .hero p {
-      font-size: 1.5rem;
-      max-width: 600px;
-    }
-
-    .section {
-      padding: 4rem 2rem;
-      text-align: center;
-    }
-
-    .section.manifesto {
-      background-color: #f4f4f4;
-    }
-
-    .section h2 {
-      font-size: 2.5rem;
-      color: #608363;
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .section h2 i {
-      margin-right: 0.5rem;
-    }
-
-    .section p {
-      font-size: 1.2rem;
-      color: #333;
-      max-width: 800px;
-      margin: 0 auto;
-      line-height: 1.6;
-      margin-bottom: 2rem;
-    }
-
-    .timeline {
-      position: relative;
-      margin: 2rem auto;
-      padding: 2rem 0;
-      width: 90%;
-      max-width: 1200px;
-    }
-
-    .timeline::after {
-      content: '';
-      position: absolute;
-      width: 6px;
-      background-color: #608363;
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      margin-left: -3px;
-    }
-
-    .timeline-item {
-      padding: 1rem 2rem;
-      position: relative;
-      width: 50%;
-    }
-
-    .timeline-item::after {
-      content: '';
-      position: absolute;
-      width: 25px;
-      height: 25px;
-      right: -13px;
-      background-color: white;
-      border: 4px solid #608363;
-      top: 15px;
-      border-radius: 50%;
-      z-index: 1;
-    }
-
-    .timeline-item-content {
-      padding: 1rem;
-      background-color: rgb(255, 255, 255);
-      position: relative;
-      border-radius: 15px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .timeline-item.left {
-      left: 0;
-    }
-
-    .timeline-item.left::before {
-      content: " ";
-      height: 0;
-      position: absolute;
-      top: 22px;
-      right: 30px;
-      border: medium solid white;
-      border-width: 10px 0 10px 10px;
-      border-color: transparent transparent transparent white;
-    }
-
-    .timeline-item.right {
-      left: 50%;
-    }
-
-    .timeline-item.right::before {
-      content: " ";
-      height: 0;
-      position: absolute;
-      top: 22px;
-      left: 30px;
-      border: medium solid white;
-      border-width: 10px 10px 10px 0;
-      border-color: transparent white transparent transparent;
-    }
-
-    .timeline-item.right::after {
-      left: -13px;
-    }
-
-    @media (max-width: 768px) {
-      .timeline::after {
-        left: 31px;
-      }
-      .timeline {
-        font-size: 1300x;
-      }
-
-      .timeline-item {
-        width: 100%;
-        padding-left: 70px;
-        padding-right: 25px;
-      }
-
-      .timeline-item.left,
-      .timeline-item.right {
-        left: 0;
-      }
-
-      .timeline-item.left::before,
-      .timeline-item.right::before {
-        left: 60px;
-        border: medium solid white;
-        border-width: 10px 10px 10px 0;
-        border-color: transparent rgba(255, 255, 255, 0.795) transparent transparent;
-      }
-
-      .timeline-item.left::after,
-      .timeline-item.right::after {
-        left: 15px;
-      }
-    }
-
-    .footer {
-      background-color: rgba(55, 71, 55, 0.8);
-      color: #fff;
-      padding: 2rem 0;
-      text-align: center;
-    }
-
-    .footer-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      margin-bottom: 1rem;
-    }
-
-    .footer-logo img {
-      height: 40px;
-      margin-right: 10px;
-    }
-
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .footer-links a {
-      color: #fff;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    .footer-links a:hover {
-      color: #4b6086;
-    }
-
-    .footer-contact p {
-      margin: 0.5rem 0;
-      font-size: 0.9rem;
-    }
-
-    @media (max-width: 768px) {
-      .footer-container {
-        flex-direction: column;
-        align-items: center;
-      }
-    }
-
-    .loader {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: #fff;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 2000;
-    }
-
-    .loader .circle {
-      border: 4px solid #e0e0e0;
-      border-top: 4px solid #608363; /* Green found on the page */
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      animation: spin 1s linear infinite;
-      margin-bottom: 20px;
-    }
-
-    .loader p {
-      font-size: 1.5rem;
-      color: #333;
-    }
-
-    @keyframes spin {
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-
-    .loader.hidden {
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.5s ease, visibility 0.5s ease;
-    }
-
-    .footer-icons {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .footer-icons a {
-      color: #fff;
-      font-size: 1.5rem;
-      transition: color 0.3s ease;
-    }
-
-    .footer-icons a:hover {
-      color: #4b6086;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    #scrollToTopBtn {
-      display: none;
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 100;
-      background-color: #4b6086;
-      color: #fff;
-      border: none;
-      border-radius: 50%;
-      padding: 15px;
-      cursor: pointer;
-      font-size: 18px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-      transition: background-color 0.3s ease, transform 0.3s ease;
-    }
-
-    #scrollToTopBtn:hover {
-      background-color: #637560;
-      transform: scale(1.1);
-    }
-    @media (max-width: 768px) {
-  .hero h1 {
-    font-size: 2rem; /* Adjust the font size for mobile */
-  }
-
-  .section h2 {
-    font-size: 1.5rem; /* Adjust the font size for mobile */
-  }
-
-  .section p {
-    font-size: 1rem; /* Optional: Adjust the font size for paragraphs if needed */
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mission and Vision - Elementsian Government</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="loader.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+.timeline-section {
+    padding: 40px 20px;
+    background-color: #f9f9f9;
 }
 
-  </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+.timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.timeline-container {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+}
+
+.timeline-container.left {
+    left: 0;
+}
+
+.timeline-container.right {
+    left: 50%;
+}
+
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: -17px;
+    background-color: white;
+    border: 4px solid #e9ecef;
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline-container.right::before {
+    left: -17px;
+}
+
+.timeline-content {
+    padding: 20px 30px;
+    background-color: white;
+    position: relative;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: height 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+.timeline-content h2 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #2c3e50;
+}
+
+.timeline-content p {
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 0;
+}
+
+.timeline-content .expanded-info {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+}
+
+.timeline-content:hover {
+    height: auto;
+}
+
+.timeline-content:hover .expanded-info {
+    max-height: 200px; /* Adjust this value based on the content length */
+}
+
+.timeline-content i {
+    margin-right: 10px;
+    color: #2c3e50;
+}
+
+/* New styles for connecting elements */
+.connection-line {
+    position: absolute;
+    width: 6px;
+    background-color: #e9ecef;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -3px;
+    z-index: -1;
+}
+
+.timeline-container.left .connection-line {
+    right: -25px;
+}
+
+.timeline-container.right .connection-line {
+    left: -25px;
+}
+
+.timeline-container.left::before,
+.timeline-container.right::before {
+    background-color: #ffffff00;
+    border: none;
+}
+
+/* Style for additional elements */
+.timeline-section h3 {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.additional-content {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.additional-content p {
+    font-size: 1.1em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.additional-content .button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.additional-content .button:hover {
+    background-color: #0056b3;
+}
+.timeline-container.left:nth-of-type(1) .timeline-content {
+    background-color: #f2a1a1; /* Light Red */
+}
+
+.timeline-container.right:nth-of-type(2) .timeline-content {
+    background-color: #f2c1a1; /* Light Orange */
+}
+
+.timeline-container.left:nth-of-type(3) .timeline-content {
+    background-color: #f2e1a1; /* Light Yellow */
+}
+
+.timeline-container.right:nth-of-type(4) .timeline-content {
+    background-color: #d4f2a1; /* Light Green */
+}
+
+.timeline-container.left:nth-of-type(5) .timeline-content {
+    background-color: #a1f2e1; /* Light Teal */
+}
+
+.timeline-container.right:nth-of-type(6) .timeline-content {
+    background-color: #a1d4f2; /* Light Blue */
+}
+
+.timeline-container.left:nth-of-type(7) .timeline-content {
+    background-color: #c1a1f2; /* Light Purple */
+}
+
+.timeline-container.right:nth-of-type(8) .timeline-content {
+    background-color: #f2a1d4; /* Light Pink */
+}
+
+.timeline-container.left:nth-of-type(9) .timeline-content {
+    background-color: #f2a1c1; /* Light Rose */
+}
+
+.timeline-container.right:nth-of-type(10) .timeline-content {
+    background-color: #d4a1f2; /* Light Lavender */
+}
+
+.timeline-container.left:nth-of-type(11) .timeline-content {
+    background-color: #a1f2a1; /* Light Lime */
+}
+
+.timeline-container.right:nth-of-type(12) .timeline-content {
+    background-color: #f2d4a1; /* Light Beige */
+}
+
+.timeline-container.left:nth-of-type(13) .timeline-content {
+    background-color: #a1c1f2; /* Light Sky Blue */
+}
+
+.timeline-container.right:nth-of-type(14) .timeline-content {
+    background-color: #f2a1a1; /* Light Coral */
+}
+
+.timeline-container.left:nth-of-type(15) .timeline-content {
+    background-color: #a1f2f2; /* Light Cyan */
+}
+
+.timeline-container.right:nth-of-type(16) .timeline-content {
+    background-color: #f2a1f2; /* Light Magenta */
+}
+
+.timeline-container.left:nth-of-type(17) .timeline-content {
+    background-color: #c1f2a1; /* Light Apple Green */
+}
+
+.timeline-container.right:nth-of-type(18) .timeline-content {
+    background-color: #a1f2c1; /* Light Mint Green */
+}
+
+.timeline-container.left:nth-of-type(19) .timeline-content {
+    background-color: #d4f2a1; /* Light Yellow Green */
+}
+
+.timeline-container.right:nth-of-type(20) .timeline-content {
+    background-color: #a1a1f2; /* Light Violet */
+}
+
+
+    </style>
 </head>
 <body>
-  <div class="loader">
-    <div class="circle"></div>
-    <p>Loading...</p>
-  </div>
+    <div id="loader-container">
+        <div class="custom-loader"></div>
+        <div class="loader-footer">
+            <img src="https://i.ibb.co/CBpzkT9/Elementsian-flag.png" alt="Flag" class="tiny-flag">
+            <p>&copy; 2024 Elementsian Government</p>
+        </div>
+    </div>
+    <div id="content" style="display: none;">
+        <div class="page-wrapper">
+            <div class="hero-image" style="background-image: url('https://i.ibb.co/1sbBT1R/ELEMENTSIA-4.png'); height: 470px; background-size: cover; background-position: center;"></div>
+            <nav class="navbar">
+                <div class="navbar-container">
+                    <div class="navbar-logo">
+                        <img src="https://i.ibb.co/CBpzkT9/Elementsian-flag.png" alt="Flag" class="flag-icon">
+                        <span class="navbar-title">Elementsian Government</span>
+                    </div>
+                    <ul class="navbar-menu" id="navbar-menu">
+                        <li class="navbar-item">
+                            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                        </li>
+                        <li class="navbar-item">
+                            <a href="#"><i class="fas fa-info-circle"></i> About</a>
+                            <div class="dropdown-menu">
+                                <a href="#"><i class="fas fa-history"></i> History</a>
+                                <a href="government-structure.html"><i class="fas fa-landmark"></i> Government Structure</a>
+                                <a href="mission-vision.html"><i class="fas fa-bullseye"></i> Vision and Mission</a>
+                                <a href="#"><i class="fas fa-user-tie"></i> Key Figures</a>
+                                <a href="#"><i class="fas fa-trophy"></i> Achievements</a>
+                            </div>
+                        </li>
+                        <li class="navbar-item">
+                            <a href="#"><i class="fas fa-concierge-bell"></i> Services</a>
+                            <div class="dropdown-menu">
+                                <a href="#"><i class="fas fa-people-carry"></i> Public Services</a>
+                                <a href="#"><i class="fas fa-laptop"></i> Online Services</a>
+                                <a href="#"><i class="fas fa-ambulance"></i> Emergency Services</a>
+                                <a href="#"><i class="fas fa-hospital"></i> Health Services</a>
+                                <a href="#"><i class="fas fa-chalkboard-teacher"></i> Education Services</a>
+                            </div>
+                        </li>
+                        <li class="navbar-item">
+                            <a href="#"><i class="fas fa-phone"></i> Contact</a>
+                            <div class="dropdown-menu">
+                                <a href="#"><i class="fas fa-address-book"></i> Contact Information</a>
+                                <a href="#"><i class="fas fa-comment-dots"></i> Feedback Form</a>
+                                <a href="#"><i class="fas fa-map-marker-alt"></i> Office Locations</a>
+                                <a href="#"><i class="fas fa-question-circle"></i> Frequently Asked Questions</a>
+                            </div>
+                        </li>
+                        <li class="navbar-item">
+                            <a href="vote.html"><i class="fas fa-vote-yea"></i> Am I Eligible to Vote?</a>
+                            <div class="dropdown-menu">
+                                <a href="#"><i class="fas fa-check-circle"></i> Eligibility Requirements</a>
+                                <a href="#"><i class="fas fa-pen"></i> How to Register</a>
+                                <a href="#"><i class="fas fa-map"></i> Voting Locations</a>
+                                <a href="#"><i class="fas fa-calendar-alt"></i> Important Dates</a>
+                                <a href="#"><i class="fas fa-question"></i> FAQ</a>
+                            </div>
+                        </li>
+                        <li class="navbar-item departments">
+                            <a href="#"><i class="fas fa-building"></i> Departments</a>
+                            <div class="dropdown-menu">
+                                <a href="#"><i class="fas fa-school"></i> Education</a>
+                                <a href="#"><i class="fas fa-flask"></i> Science and Technology</a>
+                                <a href="#"><i class="fas fa-tree"></i> Natural Resources</a>
+                                <a href="#"><i class="fas fa-bullhorn"></i> Public Communications</a>
+                                <a href="#"><i class="fas fa-life-ring"></i> Emergency Services</a>
+                                <a href="#"><i class="fas fa-heartbeat"></i> Health</a>
+                                <a href="#"><i class="fas fa-cogs"></i> Administration</a>
+                                <a href="#"><i class="fas fa-leaf"></i> Environmental Affairs</a>
+                                <a href="#"><i class="fas fa-bus"></i> Transportation</a>
+                                <a href="#"><i class="fas fa-gavel"></i> Justice</a>
+                                <a href="#"><i class="fas fa-bolt"></i> Energy</a>
+                                <a href="#"><i class="fas fa-tractor"></i> Agriculture</a>
+                                <a href="#"><i class="fas fa-rocket"></i> Space Administration and Exploration</a>
+                                <a href="#"><i class="fas fa-home"></i> Housing and Urban Development</a>
+                                <a href="#"><i class="fas fa-shield-alt"></i> Defense</a>
+                                <a href="#"><i class="fas fa-store"></i> Commerce</a>
+                                <a href="#"><i class="fas fa-hands-helping"></i> International Aid</a>
+                                <a href="#"><i class="fas fa-theater-masks"></i> Cultural Affairs</a>
+                                <a href="#"><i class="fas fa-globe"></i> International Relations</a>
+                                <a href="#"><i class="fas fa-project-diagram"></i> Additional Projects</a>
+                                <a href="#"><i class="fas fa-piggy-bank"></i> Reserve Fund</a>
+                                <a href="#"><i class="fas fa-handshake"></i> Trade</a>
+                                <a href="#"><i class="fas fa-users"></i> Social Services</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
 
-  <nav class="navbar">
-    <div class="logo">
-      <img src="https://i.ibb.co/3MtG5NQ/Coat-of-arms-png-removebg-preview.png" alt="Logo">
-      <span>.ele</span>
-    </div>
-    <ul class="menu">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="manifesto.html">Manifesto</a></li>
-      <li><a href="news.html">News</a></li>
-      <li><a href="index.html#contact">Contact</a></li>
-    </ul>
-    <div class="hamburger" onclick="toggleMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </nav>
-
-  <div class="hero">
-    <div class="content">
-      <h1>Manifesto</h1>
-      <p></p>
-    </div>
-  </div>
-  <button id="scrollToTopBtn" onclick="topFunction()">&#8679;</button>
-  <div id="manifesto" class="section manifesto">
+            <div class="main-content">
+                <!-- Mission and Vision Section -->
+<!-- Mission and Vision Section -->
+<section class="timeline-section">
     <div class="timeline">
-        <div class="timeline-item left">
-            <div class="timeline-item-content">
-                <h2><i class="fas fa-chart-line"></i> Economic Growth and Stability</h2>
-                <p>Our economic policies focus on creating a robust and resilient economy. We aim to attract investment, support local businesses, and create job opportunities that provide financial security for all citizens.</p>
+        <div class="timeline-container left">
+            <div class="connection-line"></div>
+            <div class="timeline-content">
+                <h2><i class="fas fa-bullseye"></i> Our Mission</h2>
+                <p>To provide transparent and efficient governance to ensure the prosperity and well-being of our citizens.</p>
+                <div class="expanded-info">
+                    <p>We aim to deliver high-quality services and uphold the values of justice, equality, and sustainability. Our mission is to create a safe, thriving, and inclusive society where every citizen has the opportunity to succeed.</p>
+                </div>
             </div>
         </div>
-        <div class="timeline-item right">
-            <div class="timeline-item-content">
-                <h2><i class="fas fa-handshake"></i> Peace and Stability</h2>
-                <p>We are dedicated to maintaining peace and stability in Elementsia, fostering a safe and secure environment for all citizens.</p>
+        <div class="timeline-container right">
+            <div class="connection-line"></div>
+            <div class="timeline-content">
+                <h2><i class="fas fa-eye"></i> Our Vision</h2>
+                <p>To build a future where Elementsia is a leader in innovation, sustainability, and social equity.</p>
+                <div class="expanded-info">
+                    <p>We envision a nation where technological advancement and environmental stewardship go hand in hand, ensuring a high quality of life for all citizens while preserving our natural resources for future generations.</p>
+                </div>
             </div>
         </div>
-        <div class="timeline-item left">
-            <div class="timeline-item-content">
-                <h2><i class="fas fa-book"></i> Education for All</h2>
-                <p>Education is the foundation of our future. We are committed to providing high-quality education to all citizens, ensuring that every individual has the skills and knowledge needed to thrive in a rapidly changing world.</p>
+        <div class="timeline-container left">
+            <div class="connection-line"></div>
+            <div class="timeline-content">
+                <h2><i class="fas fa-shield-alt"></i> Value 1: Integrity</h2>
+                <p>We adhere to the highest ethical standards in all our actions and decisions.</p>
+                <div class="expanded-info">
+                    <p>Integrity is the cornerstone of our governance, ensuring that trust and transparency are maintained in every aspect of our operations. We are committed to honesty, accountability, and ethical behavior.</p>
+                </div>
             </div>
         </div>
-        <div class="timeline-item right">
-            <div class="timeline-item-content">
-                <h2><i class="fas fa-users"></i> Teamwork and Nationalism</h2>
-                <p>We believe in the power of strong, connected communities. Our policies support community development initiatives that foster collaboration, cultural enrichment, and social cohesion.</p>
+        <div class="timeline-container right">
+            <div class="connection-line"></div>
+            <div class="timeline-content">
+                <h2><i class="fas fa-lightbulb"></i> Value 2: Innovation</h2>
+                <p>We embrace creativity and forward-thinking solutions to drive progress.</p>
+                <div class="expanded-info">
+                    <p>Innovation is at the heart of our vision for the future. We encourage new ideas, support research and development, and invest in technologies that enhance the quality of life for our citizens.</p>
+                </div>
             </div>
         </div>
-        <div class="timeline-item left">
-            <div class="timeline-item-content">
-                <h2><i class="fas fa-leaf"></i> Environmental Sustainability</h2>
-                <p>Protecting our natural environment is essential for future generations. We are committed to sustainable practices, reducing carbon emissions, and promoting renewable energy sources.</p>
+        <div class="timeline-container left">
+            <div class="connection-line"></div>
+            <div class="timeline-content">
+                <h2><i class="fas fa-leaf"></i> Value 3: Sustainability</h2>
+                <p>We prioritize the long-term health of our environment and communities.</p>
+                <div class="expanded-info">
+                    <p>Sustainability guides our policies and practices, ensuring that our development is responsible and our natural resources are preserved for future generations. We are committed to reducing our environmental footprint and promoting green initiatives.</p>
+                </div>
             </div>
         </div>
-        <div class="timeline-item right">
-            <div class="timeline-item-content">
-                <h2><i class="fas fa-heart"></i> Healthcare and Well-being</h2>
-                <p>Access to quality healthcare is a fundamental right. We aim to provide comprehensive healthcare services that are affordable and accessible to all citizens, ensuring their physical and mental well-being.</p>
+        <div class="timeline-container right">
+            <div class="connection-line"></div>
+            <div class="timeline-content">
+                <h2><i class="fas fa-users"></i> Value 4: Social Equity</h2>
+                <p>We strive to create an inclusive society where everyone has equal opportunities.</p>
+                <div class="expanded-info">
+                    <p>Social equity is fundamental to our mission. We work to eliminate barriers, provide equitable access to resources, and foster a culture of inclusion and respect. Our goal is to ensure that all citizens, regardless of background, have the opportunity to thrive.</p>
+                </div>
             </div>
         </div>
-        <div class="timeline-item left">
-            <div class="timeline-item-content">
+        <div class="timeline-container left">
+            <div class="connection-line"></div>
+            <div class="timeline-content">
+                <h2><i class="fas fa-handshake"></i> Value 5: Collaboration</h2>
+                <p>We believe in the power of working together to achieve common goals.</p>
+                <div class="expanded-info">
+                    <p>Collaboration involves engaging with citizens, communities, and organizations to co-create solutions that address our most pressing challenges. We foster partnerships that leverage diverse perspectives and expertise to drive positive change.</p>
+                </div>
+            </div>
+        </div>
+        <div class="timeline-container right">
+            <div class="connection-line"></div>
+            <div class="timeline-content">
+                <h2><i class="fas fa-hands-helping"></i> Value 6: Service</h2>
+                <p>We are dedicated to serving the public with excellence and compassion.</p>
+                <div class="expanded-info">
+                    <p>Service is at the heart of our mission. We are committed to meeting the needs of our citizens, providing high-quality services, and ensuring that our actions benefit the community. Our approach is centered on empathy, responsiveness, and continuous improvement.</p>
+                </div>
+            </div>
+        </div>
+        <div class="timeline-container left">
+            <div class="connection-line"></div>
+            <div class="timeline-content">
+                <h2><i class="fas fa-chart-line"></i> Economic Growth</h2>
+                <p>We foster economic growth that benefits all citizens.</p>
+                <div class="expanded-info">
+                    <p>Our policies are designed to stimulate economic development, create jobs, and enhance the standard of living. We support businesses, encourage innovation, and invest in infrastructure to drive sustainable economic growth.</p>
+                </div>
+            </div>
+        </div>
+        <div class="timeline-container right">
+            <div class="connection-line"></div>
+            <div class="timeline-content">
+                <h2><i class="fas fa-building"></i> Infrastructure Improvement</h2>
+                <p>We are committed to improving and modernizing our infrastructure.</p>
+                <div class="expanded-info">
+                    <p>From transportation and utilities to digital connectivity, we invest in infrastructure projects that support economic growth, enhance public safety, and improve the quality of life for our citizens.</p>
+                </div>
+            </div>
+        </div>
+        <div class="timeline-container left">
+            <div class="connection-line"></div>
+            <div class="timeline-content">
+                <h2><i class="fas fa-heart"></i> Health and Wellness</h2>
+                <p>We promote the health and well-being of our citizens.</p>
+                <div class="expanded-info">
+                    <p>Our healthcare initiatives focus on accessibility, quality, and preventive care. We aim to ensure that all citizens have access to affordable healthcare services and live in healthy, supportive environments.</p>
+                </div>
+            </div>
+        </div>
+        <div class="timeline-container right">
+            <div class="connection-line"></div>
+            <div class="timeline-content">
+                <h2><i class="fas fa-book"></i> Education and Learning</h2>
+                <p>We invest in education to empower our citizens and future generations.</p>
+                <div class="expanded-info">
+                    <p>We provide high-quality educational opportunities, support lifelong learning, and foster innovation in teaching and learning. Our goal is to equip citizens with the knowledge and skills needed to thrive in a changing world.</p>
+                </div>
+            </div>
+        </div>
+        <div class="timeline-container left">
+            <div class="connection-line"></div>
+            <div class="timeline-content">
                 <h2><i class="fas fa-globe"></i> Global Engagement</h2>
-                <p>We believe in fostering positive international relations. Our foreign policies promote peace, collaboration, and mutual respect with other nations, ensuring a stable and prosperous global community.</p>
+                <p>We actively engage with the international community to promote peace and prosperity.</p>
+                <div class="expanded-info">
+                    <p>Our foreign policy is centered on building strong relationships, promoting trade, and addressing global challenges. We strive to be a responsible global citizen and contribute to a more peaceful and prosperous world.</p>
+                </div>
             </div>
         </div>
-        <div class="timeline-item right">
-            <div class="timeline-item-content">
-                <h2><i class="fas fa-balance-scale"></i> Justice and Equality</h2>
-                <p>Ensuring justice and equality for all citizens is at the core of our governance. We are committed to upholding human rights, eliminating discrimination, and providing equal opportunities for everyone.</p>
+        <div class="timeline-container right">
+            <div class="connection-line"></div>
+            <div class="timeline-content">
+                <h2><i class="fas fa-shield-alt"></i> Public Safety</h2>
+                <p>We ensure the safety and security of our citizens.</p>
+                <div class="expanded-info">
+                    <p>Our public safety initiatives focus on crime prevention, emergency preparedness, and responsive law enforcement. We work to create safe communities where citizens feel secure and protected.</p>
+                </div>
             </div>
         </div>
-        <div class="timeline-item left">
-            <div class="timeline-item-content">
-                <h2><i class="fas fa-briefcase"></i> Innovation and Technology</h2>
-                <p>We strive to be at the forefront of technological advancement. Our policies encourage innovation, support research and development, and promote the integration of cutting-edge technologies in various sectors.</p>
+        <div class="timeline-container left">
+            <div class="connection-line"></div>
+            <div class="timeline-content">
+                <h2><i class="fas fa-hand-holding-usd"></i> Financial Responsibility</h2>
+                <p>We manage public funds with transparency and accountability.</p>
+                <div class="expanded-info">
+                    <p>Our financial policies ensure that taxpayer money is used efficiently and effectively to benefit the public. We prioritize fiscal responsibility and strive to maintain balanced budgets and sustainable financial practices.</p>
+                </div>
             </div>
         </div>
-        <div class="timeline-item right">
-            <div class="timeline-item-content">
-                <h2><i class="fas fa-shield-alt"></i> National Security</h2>
-                <p>Protecting our nation and its citizens is a top priority. We are dedicated to maintaining a strong defense system, enhancing cybersecurity, and ensuring preparedness against any threats.</p>
+        <div class="timeline-container right">
+            <div class="connection-line"></div>
+            <div class="timeline-content">
+                <h2><i class="fas fa-seedling"></i> Environmental Protection</h2>
+                <p>We are committed to protecting our natural resources and biodiversity.</p>
+                <div class="expanded-info">
+                    <p>Our environmental policies focus on conservation, pollution reduction, and the sustainable use of natural resources. We work to ensure that our development does not compromise the health of our ecosystems and wildlife.</p>
+                </div>
+            </div>
+        </div>
+        <div class="timeline-container left">
+            <div class="connection-line"></div>
+            <div class="timeline-content">
+                <h2><i class="fas fa-cogs"></i> Technological Advancement</h2>
+                <p>We invest in technology to drive innovation and improve public services.</p>
+                <div class="expanded-info">
+                    <p>Our commitment to technological advancement includes supporting research and development, enhancing digital infrastructure, and leveraging technology to make government services more efficient and accessible.</p>
+                </div>
+            </div>
+        </div>
+        <div class="timeline-container right">
+            <div class="connection-line"></div>
+            <div class="timeline-content">
+                <h2><i class="fas fa-briefcase"></i> Employment Opportunities</h2>
+                <p>We strive to create job opportunities for all citizens.</p>
+                <div class="expanded-info">
+                    <p>Our employment policies focus on job creation, workforce development, and supporting businesses to ensure that citizens have access to meaningful and well-paying jobs.</p>
+                </div>
+            </div>
+        </div>
+        <div class="timeline-container left">
+            <div class="connection-line"></div>
+            <div class="timeline-content">
+                <h2><i class="fas fa-home"></i> Housing for All</h2>
+                <p>We are committed to ensuring affordable housing for all citizens.</p>
+                <div class="expanded-info">
+                    <p>Our housing policies aim to increase the availability of affordable housing, support homeownership, and ensure that all citizens have access to safe and secure housing.</p>
+                </div>
+            </div>
+        </div>
+        <div class="timeline-container right">
+            <div class="connection-line"></div>
+            <div class="timeline-content">
+                <h2><i class="fas fa-network-wired"></i> Digital Connectivity</h2>
+                <p>We prioritize digital connectivity to bridge the digital divide.</p>
+                <div class="expanded-info">
+                    <p>Our initiatives focus on expanding internet access, improving digital literacy, and ensuring that all citizens can participate in the digital economy.</p>
+                </div>
+            </div>
+        </div>
+        <div class="timeline-container left">
+            <div class="connection-line"></div>
+            <div class="timeline-content">
+                <h2><i class="fas fa-trophy"></i> Excellence in Governance</h2>
+                <p>We strive for excellence in all aspects of governance.</p>
+                <div class="expanded-info">
+                    <p>Our commitment to excellence includes continuous improvement, responsiveness to citizen needs, and the implementation of best practices in public administration.</p>
+                </div>
+            </div>
+        </div>
+        <div class="timeline-container right">
+            <div class="connection-line"></div>
+            <div class="timeline-content">
+                <h2><i class="fas fa-people-arrows"></i> Inclusive Communities</h2>
+                <p>We work to build inclusive and welcoming communities.</p>
+                <div class="expanded-info">
+                    <p>Our policies and programs focus on fostering diversity, promoting cultural understanding, and ensuring that all community members feel valued and included.</p>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</section>
 
+            </div>
 
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-logo">
-        <img src="https://i.ibb.co/3MtG5NQ/Coat-of-arms-png-removebg-preview.png" alt="Logo">
-        <span></span>
-      </div>
-      <div class="footer-contact">
-        <p>12 Tertal St, Elementsia, EL 5689</p>
-        <p>Email: info@elementsia.gov</p>
-        <p>Phone: (123) 456-7890</p>
-        <div class="footer-icons">
-          <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-          <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <footer class="site-footer">
+                <div class="footer-content">
+                    <img src="https://i.ibb.co/CBpzkT9/Elementsian-flag.png" alt="Flag" class="footer-flag">
+                    <p>&copy; 2024 Elementsian Government. All rights reserved.</p>
+                    <ul class="footer-links">
+                        <li><a href="terms.html"><i class="fas fa-file-alt"></i> Terms of Use</a></li>
+                        <li><a href="privacy.html"><i class="fas fa-user-shield"></i> Privacy Policy</a></li>
+                        <li><a href="accessibility.html"><i class="fas fa-universal-access"></i> Accessibility</a></li>
+                        <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+            </footer>
         </div>
-      </div>
     </div>
-  </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const loader = document.getElementById('loader-container');
+            const content = document.getElementById('content');
 
-  <script>
-    function toggleMenu() {
-      const menu = document.querySelector('.menu');
-      const hamburger = document.querySelector('.hamburger');
-      menu.classList.toggle('active');
-      hamburger.classList.toggle('active');
-    }
-
-    window.addEventListener('load', () => {
-      const loader = document.querySelector('.loader');
-      loader.classList.add('hidden');
-    });
-
-    let scrollToTopBtn = document.getElementById("scrollToTopBtn");
-    window.onscroll = function() {scrollFunction()};
-
-    function scrollFunction() {
-      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        scrollToTopBtn.style.display = "block";
-      } else {
-        scrollToTopBtn.style.display = "none";
-      }
-    }
-
-    function topFunction() {
-      document.body.scrollTop = 0;
-      document.documentElement.scrollTop = 0;
-    }
-  </script>
+            setTimeout(() => {
+                loader.style.display = 'none';
+                content.style.display = 'block';
+            }, 2000); // Adjust this value for loader duration
+        });
+    </script>
 </body>
 </html>

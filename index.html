@@ -1,732 +1,486 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home - Elementsian Government</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-    }
-
-    .loader {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: #fff;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 2000;
-    }
-    .footer-icons {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.footer-icons a {
-  color: #fff;
-  font-size: 1.5rem;
-  transition: color 0.3s ease;
-}
-
-.footer-icons a:hover {
-  color: #4b6086;
-}
-
-    .loader .circle {
-      border: 4px solid #e0e0e0;
-      border-top: 4px solid #608363; /* Green found on the page */
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      animation: spin 1s linear infinite;
-      margin-bottom: 20px;
-    }
-
-    .loader p {
-      font-size: 1.5rem;
-      color: #333;
-    }
-
-    @keyframes spin {
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: rgba(51, 51, 51, 0.8);
-      padding: 1rem 2rem;
-      position: fixed;
-      width: 100%;
-      z-index: 1000;
-      top: 0;
-    }
-
-    .navbar .logo {
-      display: flex;
-      align-items: center;
-      font-size: 1.5rem;
-      color: #fff;
-    }
-
-    .navbar .logo img {
-      height: 40px;
-      margin-right: 10px;
-    }
-
-    .navbar .menu {
-      display: flex;
-      list-style: none;
-      justify-content: center;
-      flex-grow: 1;
-    }
-
-    .navbar .menu li {
-      margin-left: 2rem;
-    }
-
-    .navbar .menu li a {
-      text-decoration: none;
-      color: #fff;
-      font-size: 1rem;
-      position: relative;
-      transition: color 0.3s ease;
-    }
-
-    .navbar .menu li a::before {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 2px;
-      bottom: -5px;
-      left: 0;
-      background-color: #637560;
-      visibility: hidden;
-      transform: scaleX(0);
-      transition: all 0.3s ease-in-out;
-    }
-
-    .navbar .menu li a:hover::before {
-      visibility: visible;
-      transform: scaleX(1);
-    }
-
-    .navbar .menu li a:hover {
-      color: #4b6086;
-    }
-
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .hamburger span {
-      height: 3px;
-      width: 25px;
-      background-color: #fff;
-      margin: 3px;
-      border-radius: 5px;
-      transition: 0.3s;
-    }
-
-    .hamburger.active span:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 5px);
-    }
-
-    .hamburger.active span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .hamburger.active span:nth-child(3) {
-      transform: rotate(-45deg) translate(5px, -5px);
-    }
-
-    @media (max-width: 768px) {
-      .navbar .menu {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        text-align: center;
-        background-color: rgba(51, 51, 51, 0.8);
-        position: absolute;
-        top: 100%;
-        left: 0;
-        animation: rollDown 0.5s ease-in-out forwards;
-      }
-
-      .navbar .menu.active {
-        display: flex;
-      }
-
-      .navbar .menu li {
-        padding: 1rem 0;
-      }
-
-      .hamburger {
-        display: flex;
-      }
-
-      @keyframes rollDown {
-        0% {
-          max-height: 0;
-          opacity: 0;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elementsian Government</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="loader.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .about-section, .update-section, .testimonials-section {
+            display: flex;
+            align-items: center;
+            padding: 40px 20px;
+            background-color: #f9f9f9;
         }
-        100% {
-          max-height: 500px;
-          opacity: 1;
+
+        .about-section img, .update-section img, .testimonials-section img {
+            width: 40%;
+            margin-right: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-      }
-    }
 
-    .hero {
-      width: 100%;
-      height: 60vh; /* Reduced height */
-      background: url('https://th.bing.com/th/id/R.22dfcd82ca70d8bf8b10265b49075042?rik=uLhk8ExHxlzI9Q&pid=ImgRaw&r=0') no-repeat center center/cover;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #fff;
-      text-align: center;
-      text-decoration: underline;
-    }
+        .about-content, .update-content, .testimonials-content {
+            max-width: 60%;
+        }
 
-    .hero .content {
-      padding: 2rem;
-      border-radius: 10px;
-      animation: fadeIn 2s ease-in-out;
-    }
+        h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
 
-    @keyframes fadeIn {
-      0% {
+        p {
+            font-size: 1.1em;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: white;
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            border: #666 solid 2px;
+            border-radius: 25px;
+            transition: 0.3s ease-in-out;
+        }
+
+        .button:hover {
+            background-color: #4072a3;
+            border: 2px solid #4072a3;
+            padding: 10px 20px;
+            color: white;
+        }
+
+        .page-wrapper {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-content {
+            flex: 1;
+        }
+
+        .update-section img {
+            margin-left: 20px; /* Changed to margin-left to place the image on the right */
+        }
+
+        .update-content h2 {
+            color: #526b53; /* Custom color for the heading */
+        }
+
+        .update-section .button:hover {
+            background-color: #526b53;
+            border: 2px solid #526b53;
+        }
+
+        .testimonials-section {
+    background: url('https://i.ibb.co/2dVXbGC/Cool-background.jpg') no-repeat center center;
+    background-size: cover;
+    position: relative;
+    color: white;
+    padding: 60px 20px;
+}
+
+.testimonial-carousel {
+    max-width: 60%;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+}
+
+.testimonial-container {
+    display: none;
+    animation: fadeIn 1s ease-in-out;
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #333; /* Text color */
+}
+
+.testimonial-container.active {
+    display: block;
+}
+
+.testimonial-container p {
+    font-style: italic;
+    font-size: 1.2em;
+}
+
+.testimonial-container .author {
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+@keyframes fadeIn {
+    from {
         opacity: 0;
-        transform: translateY(-20px);
-      }
-      100% {
+    }
+    to {
         opacity: 1;
-        transform: translateY(0);
-      }
     }
-
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-
-    .hero p {
-      font-size: 1.5rem;
-      max-width: 600px;
-    }
-    .section {
-  padding: 4rem 2rem;
-  text-align: center;
 }
 
-.section h2 {
-  font-size: 2.5rem;
-  color: #608363; /* Royal blue */
-  margin-bottom: 1rem;
+        .carousel-controls {
+            margin-top: 20px;
+        }
+
+        .carousel-controls button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin: 0 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .carousel-controls button:hover {
+            background-color: #555;
+        }.citizen-resources-section, .emergency-alerts-section {
+    padding: 40px 20px;
+    background-color: #f9f9f9;
 }
 
-.section p {
-  font-size: 1.2rem;
-  color: #333;
-  max-width: 800px;
-  margin: 0 auto;
-  line-height: 1.6;
+.citizen-resources-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
 }
 
-.about {
-  background-color: #f7f7f7;
+.resource-item {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 250px;
+    text-align: center;
+    transition: transform 0.3s;
 }
 
-.manifesto {
-  background-color: #e0e0e0;
+.resource-item:hover {
+    transform: translateY(-10px);
 }
 
-.news {
-  background-color: #f0f0f0;
+.resource-item i {
+    font-size: 2.5em;
+    color: #5c79a5;
+    margin-bottom: 10px;
 }
 
-.contact {
-  background-color: #d0d0d0;
-}
-.news-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
+.resource-item h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
 }
 
-.news-article {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  max-width: 300px;
-  text-align: left;
-  transition: transform 0.3s;
+.resource-item p {
+    font-size: 1em;
+    color: #333;
+    margin-bottom: 20px;
 }
 
-.news-article:hover {
-  transform: translateY(-10px);
+.resource-item a {
+    color: #5c79a5;
+    text-decoration: none;
+    background-color: white;
+    border: #5c79a5 2px solid;
+    border-radius: 25px;
+    padding: 10px;
+    margin-top: 5px;
+    transition: 0.3s ease-in-out;
 }
 
-.news-article img {
-  width: 100%;
-  height: auto;
+.resource-item a:hover {
+    background-color: #5c79a5;
+    color: white;
 }
 
-.news-article h3 {
-  font-size: 1.5rem;
-  color: #608363; /* Royal blue */
-  margin: 1rem;
+.emergency-alerts-section {
+    background-color: #ffcccc;
+    padding: 40px 20px;
+    text-align: center;
+    color: #b30000;
 }
 
-.news-article p {
-  font-size: 1rem;
-  color: #333;
-  margin: 0 1rem 1rem 1rem;
+.emergency-alerts-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
 }
 
-.news-article .read-more {
-  display: inline-block;
-  margin: 1rem;
-  padding: 0.5rem 1rem;
-  background-color: #577066; /* Royal blue */
-  color: #fff;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-}
-
-.news-article .read-more:hover {
-  background-color: #314b8a; /* Darker shade of royal blue */
-}
-
-@media (max-width: 768px) {
-  .news-article {
-    max-width: 100%;
-  }
-}
-.manifesto-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-}
-
-.manifesto-item {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  max-width: 300px;
-  text-align: center;
-  padding: 2rem;
-  transition: transform 0.3s;
-}
-
-.manifesto-item:hover {
-  transform: translateY(-10px);
-}
-
-.manifesto-item img {
-  width: 50px; /* Reduced size */
-  height: auto;
-  margin-bottom: 1rem;
-}
-
-.manifesto-item h3 {
-  font-size: 1.5rem;
-  color: #608363; /* Royal blue */
-  margin-bottom: 1rem;
-}
-
-.manifesto-item p {
-  font-size: 1rem;
-  color: #333;
-  margin: 0;
-}
-
-@media (max-width: 768px) {
-  .manifesto-container {
-    flex-direction: column;
+.emergency-alert {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    display: flex;
     align-items: center;
-  }
-
-  .manifesto-item {
-    max-width: 100%;
-  }
-}
-/* Cabinet Section */
-.cabinet-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
+    justify-content: center;
 }
 
-.cabinet-member {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 300px;
-  text-align: center;
-  padding: 2rem;
+.emergency-alert i {
+    font-size: 2.5em;
+    color: #b30000;
+    margin-right: 10px;
 }
 
-.cabinet-member img {
-  border-radius: 50%;
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  margin-bottom: 1rem;
+.emergency-alert p {
+    font-size: 1.1em;
+    color: #b30000;
 }
 
-.cabinet-member h3 {
-  font-size: 1.5rem;
-  color: #608363; /* Royal blue */
-}
-
-.cabinet-member p {
-  font-size: 1rem;
-  color: #333;
-}
-
-/* King Section */
-.king-message {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-}
-
-.king-message img {
-  border-radius: 10px;
-  width: 300px;
-  height: auto;
-}
-
-.message-content {
-  max-width: 600px;
-  text-align: center;
-}
-
-.message-content p {
-  font-size: 1.2rem;
-  color: #333;
-  margin-bottom: 1rem;
-}
-
-.message-content h3 {
-  font-size: 1.5rem;
-  color:#577066 ; /* Royal blue */
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .cabinet-container,
-  .king-message {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .cabinet-member,
-  .message-content {
-    max-width: 100%;
-  }
-
-  .king-message img {
-    width: 100%;
-    max-width: 300px;
-  }
-}
-.footer {
-  background-color: rgba(55, 71, 55, 0.8);
-  color: #fff;
-  padding: 2rem 0;
-  text-align: center;
-}
-
-.footer-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.footer-logo {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-.footer-logo img {
-  height: 40px;
-  margin-right: 10px;
-}
-
-.footer-links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.footer-links a {
-  color: #fff;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.footer-links a:hover {
-  color: #4b6086;
-}
-
-.footer-contact p {
-  margin: 0.5rem 0;
-  font-size: 0.9rem;
-}
-
-@media (max-width: 768px) {
-  .footer-container {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-#scrollToTopBtn {
-  display: none;
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 100;
-  background-color: #4b6086;
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  padding: 15px;
-  cursor: pointer;
-  font-size: 18px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-#scrollToTopBtn:hover {
-  background-color: #637560;
-  transform: scale(1.1);
-}
-
-  </style>
+    </style>
 </head>
 <body>
-  <div class="loader">
-    <div class="circle"></div>
-    <p>Loading...</p>
-  </div>
-  
-  <nav class="navbar">
-    <div class="logo">
-      <img src="https://i.ibb.co/3MtG5NQ/Coat-of-arms-png-removebg-preview.png" alt="Logo">
-      <span></span>
-    </div>
-    <ul class="menu">
-      <li><a href="#home">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="manifesto.html">Manifesto</a></li>
-      <li><a href="news.html">News</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <div class="hamburger" onclick="toggleMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </nav>
-
-  <div class="hero">
-    <div class="content">
-      <h1>Home</h1>
-      <p></p>
-    </div>
-  </div>
-
-  <div id="about" class="section about">
-    <button id="scrollToTopBtn" onclick="topFunction()">&#8679;</button>
-
-    <h2>About Us</h2>
-    <p>We have a rich history of over 800 years of governance, focusing on transparency and love for the people.</p>
-    <p>Our nation's journey began in the early 13th century, marked by a commitment to justice and equality. Over the centuries, we have evolved, embracing modern values while preserving our cherished traditions.</p>
-    <p>Our government is dedicated to ensuring the welfare of all citizens, fostering an environment where innovation and culture thrive. We believe in the power of community and the importance of each individual's contribution to our collective success.</p>
-    <p>Our policies are rooted in a deep respect for human rights and the natural environment, ensuring sustainable development for future generations. We strive to be a beacon of democracy, inspiring other nations with our steadfast dedication to fairness and integrity.</p>
-    <p>Join us as we continue to build a brighter future, where every voice is heard, and every citizen has the opportunity to prosper.</p>
-  </div>
-  
-
-  <div id="manifesto" class="section manifesto">
-    <h2>Our Manifesto</h2>
-    <div class="manifesto-container">
-      <div class="manifesto-item">
-        <img src="https://i.ibb.co/fYh2zkn/pie-chart.gif" alt="Economic Growth Icon" class="animated-icon">
-        <h3>Economic Growth</h3>
-        <p>Our policies focus on fostering economic growth that benefits all sectors of society.</p>
-      </div>
-      <div class="manifesto-item">
-        <img src="https://i.ibb.co/h1nZHTn/white-flag.gif" alt="Peace and Stability Icon" class="animated-icon">
-        <h3>Peace and Stability</h3>
-        <p>We are committed to maintaining peace and stability within our nation and in our relations with others.</p>
-      </div>
-      <div class="manifesto-item">
-        <img src="https://i.ibb.co/ch2pq4W/meeting.gif" alt="Education Icon" class="animated-icon">
-        <h3>Education</h3>
-        <p>We aim to provide high-quality education to all citizens, ensuring equal opportunities for learning and growth.</p>
-      </div>
-      <div class="manifesto-item">
-        <img src="https://i.ibb.co/b7kZrJs/teamwork.gif" alt="Teamwork and Nationalism Icon" class="animated-icon">
-        <h3>Teamwork and Nationalism</h3>
-        <p>We promote teamwork and a strong sense of nationalism to build a united and prosperous nation.</p>
-      </div>
-    </div>
-  </div>
-  <div id="news" class="section news">
-    <h2>Latest News</h2>
-    <div class="news-container">
-      <div class="news-article">
-        <img src="https://via.placeholder.com/300" alt="News Image 1">
-        <h3>Parliament Passes New Education Bill</h3>
-        <p>The parliament has passed a new education bill that aims to reform the current education system, providing better resources and opportunities for students...</p>
-        <a href="#" class="read-more">Read More</a>
-      </div>
-      <div class="news-article">
-        <img src="https://via.placeholder.com/300" alt="News Image 2">
-        <h3>Healthcare Reform Debate Heats Up</h3>
-        <p>The debate over the proposed healthcare reform bill continues to heat up in parliament, with ministers and citizens voicing their opinions...</p>
-        <a href="#" class="read-more">Read More</a>
-      </div>
-      <div class="news-article">
-        <img src="https://via.placeholder.com/300" alt="News Image 3">
-        <h3>Prime Minister's Address on Foreign Policy</h3>
-        <p>Prime Minister Jan van Dijk addressed the nation on the current foreign policy stance, outlining key strategies and future plans...</p>
-        <a href="#" class="read-more">Read More</a>
-      </div>
-    </div>
-  </div>
-
-  <div id="cabinet" class="section cabinet">
-    <h2>Meet Our Cabinet</h2>
-    <div class="cabinet-container">
-      <div class="cabinet-member">
-        <img src="https://i.ibb.co/5GZWw9C/Min1.png" alt="Cabinet Member 1">
-        <h3>Jan van Dijk</h3>
-        <p>Prime Minister</p>
-      </div>
-      <div class="cabinet-member">
-        <img src="https://i.ibb.co/wLqgVst/image.png" alt="Cabinet Member 2">
-        <h3>Annemieke de Jong</h3>
-        <p>Minister of Finance</p>
-      </div>
-      <div class="cabinet-member">
-        <img src="https://i.ibb.co/sw4KHBt/Min3.png" alt="Cabinet Member 3">
-        <h3>Sofie Vannte Graant</h3>
-        <p>Minister of Foreign Affairs</p>
-      </div>
-      <div class="cabinet-member">
-        <img src="https://i.ibb.co/x67w2fT/image.png" alt="Cabinet Member 4">
-        <h3>Patroo van der Berg</h3>
-        <p>Minister of Health</p>
-      </div>
-    </div>
-  </div>
-  
-
-  <div id="king" class="section king">
-    <h2>A Word from Our King</h2>
-    <div class="king-message">
-      <img src="https://via.placeholder.com/300" alt="King's Portrait">
-      <div class="message-content">
-        <p>As your king, I am committed to leading our nation with integrity, compassion, and dedication. Together, we will continue to build a prosperous and harmonious society. I thank you all for your unwavering support and trust.</p>
-        <h3>King Vertien Gustav</h3>
-      </div>
-    </div>
-  </div>
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-logo">
-        <img src="https://i.ibb.co/3MtG5NQ/Coat-of-arms-png-removebg-preview.png" alt="Logo">
-        <span></span>
-      </div>
-      <div class="footer-contact">
-        <p>12 Tertal St, Elementsia, EL 5689</p>
-        <p>Email: info@elementsia.gov</p>
-        <p>Phone: (123) 456-7890</p>
-        <div class="footer-icons">
-          <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-          <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+    <div id="loader-container">
+        <div class="custom-loader"></div>
+        <div class="loader-footer">
+            <img src="https://i.ibb.co/CBpzkT9/Elementsian-flag.png" alt="Flag" class="tiny-flag">
+            <p>&copy; 2024 Elementsian Government</p>
         </div>
-      </div>
-  </footer>
+    </div>
+    <div id="content" style="display: none;">
+        <div class="page-wrapper">
+            <div class="hero-image"></div>
+            <nav class="navbar">
+                <div class="navbar-container">
+                    <div class="navbar-logo">
+                        <img src="https://i.ibb.co/CBpzkT9/Elementsian-flag.png" alt="Flag" class="flag-icon">
+                        <span class="navbar-title">Elementsian Government</span>
+                    </div>
+                    <ul class="navbar-menu" id="navbar-menu">
+                        <li class="navbar-item">
+                            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                        </li>
+                        <li class="navbar-item">
+                            <a href="#"><i class="fas fa-info-circle"></i> About</a>
+                            <div class="dropdown-menu">
+                                <a href="history.html"><i class="fas fa-history"></i> History</a>
+                                <a href="government-structure.html"><i class="fas fa-landmark"></i> Government Structure</a>
+                                <a href="manifesto.html"><i class="fas fa-bullseye"></i> Vision and Mission</a>
+                                <a href="key-figures.html"><i class="fas fa-user-tie"></i> Key Figures</a>
+                                <a href="achievements.html"><i class="fas fa-trophy"></i> Achievements</a>
+                                <a href="financial-overview.html"><i class="fas fa-chart-line"></i> Financial Overview</a>
+                            </div>
+                        </li>
+                        <li class="navbar-item">
+                            <a href="#"><i class="fas fa-concierge-bell"></i> Services</a>
+                            <div class="dropdown-menu">
+                                <a href="public-services.html"><i class="fas fa-people-carry"></i> Public Services</a>
+                                <a href="online-services.html"><i class="fas fa-laptop"></i> Online Services</a>
+                                <a href="emergency-services.html"><i class="fas fa-ambulance"></i> Emergency Services</a>
+                                <a href="health-services.html"><i class="fas fa-hospital"></i> Health Services</a>
+                                <a href="education-services.html"><i class="fas fa-chalkboard-teacher"></i> Education Services</a>
+                            </div>
+                        </li>
+                        <li class="navbar-item">
+                            <a href="#"><i class="fas fa-phone"></i> Contact</a>
+                            <div class="dropdown-menu">
+                                <a href="contact-information.html"><i class="fas fa-address-book"></i> Contact Information</a>
+                                <a href="feedback-form.html"><i class="fas fa-comment-dots"></i> Feedback Form</a>
+                                <a href="office-locations.html"><i class="fas fa-map-marker-alt"></i> Office Locations</a>
+                                <a href="faq.html"><i class="fas fa-question-circle"></i> Frequently Asked Questions</a>
+                            </div>
+                        </li>
+                        <li class="navbar-item">
+                            <a href="vote.html"><i class="fas fa-vote-yea"></i> Am I Eligible to Vote?</a>
+                            <div class="dropdown-menu">
+                                <a href="eligibility-requirements.html"><i class="fas fa-check-circle"></i> Eligibility Requirements</a>
+                                <a href="how-to-register.html"><i class="fas fa-pen"></i> How to Register</a>
+                                <a href="voting-locations.html"><i class="fas fa-map"></i> Voting Locations</a>
+                                <a href="important-dates.html"><i class="fas fa-calendar-alt"></i> Important Dates</a>
+                                <a href="vote-faq.html"><i class="fas fa-question"></i> FAQ</a>
+                            </div>
+                        </li>
+                        <li class="navbar-item departments">
+                            <a href="#"><i class="fas fa-building"></i> Departments</a>
+                            <div class="dropdown-menu">
+                                <a href="education-department.html"><i class="fas fa-school"></i> Education</a>
+                                <a href="science-technology-department.html"><i class="fas fa-flask"></i> Science and Technology</a>
+                                <a href="natural-resources-department.html"><i class="fas fa-tree"></i> Natural Resources</a>
+                                <a href="public-communications-department.html"><i class="fas fa-bullhorn"></i> Public Communications</a>
+                                <a href="emergency-services-department.html"><i class="fas fa-life-ring"></i> Emergency Services</a>
+                                <a href="health-department.html"><i class="fas fa-heartbeat"></i> Health</a>
+                                <a href="administration-department.html"><i class="fas fa-cogs"></i> Administration</a>
+                                <a href="environmental-affairs-department.html"><i class="fas fa-leaf"></i> Environmental Affairs</a>
+                                <a href="transportation-department.html"><i class="fas fa-bus"></i> Transportation</a>
+                                <a href="justice-department.html"><i class="fas fa-gavel"></i> Justice</a>
+                                <a href="energy-department.html"><i class="fas fa-bolt"></i> Energy</a>
+                                <a href="agriculture-department.html"><i class="fas fa-tractor"></i> Agriculture</a>
+                                <a href="space-exploration-department.html"><i class="fas fa-rocket"></i> Space Administration and Exploration</a>
+                                <a href="housing-urban-development-department.html"><i class="fas fa-home"></i> Housing and Urban Development</a>
+                                <a href="defense-department.html"><i class="fas fa-shield-alt"></i> Defense</a>
+                                <a href="commerce-department.html"><i class="fas fa-store"></i> Commerce</a>
+                                <a href="international-aid-department.html"><i class="fas fa-hands-helping"></i> International Aid</a>
+                                <a href="cultural-affairs-department.html"><i class="fas fa-theater-masks"></i> Cultural Affairs</a>
+                                <a href="international-relations-department.html"><i class="fas fa-globe"></i> International Relations</a>
+                                <a href="additional-projects.html"><i class="fas fa-project-diagram"></i> Additional Projects</a>
+                                <a href="reserve-fund.html"><i class="fas fa-piggy-bank"></i> Reserve Fund</a>
+                                <a href="trade-department.html"><i class="fas fa-handshake"></i> Trade</a>
+                                <a href="social-services-department.html"><i class="fas fa-users"></i> Social Services</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            
 
-  <script>
-    function toggleMenu() {
-      const menu = document.querySelector('.menu');
-      const hamburger = document.querySelector('.hamburger');
-      menu.classList.toggle('active');
-      hamburger.classList.toggle('active');
-    }
+            <div class="main-content">
+                <!-- About Section -->
+                <section class="about-section">
+                    <img src="https://th.bing.com/th/id/R.b763875d7231d29bc8ebea0d371a5d1b?rik=B%2fgpFRhVFZZrpQ&riu=http%3a%2f%2fyesofcorsa.com%2fwp-content%2fuploads%2f2017%2f03%2f4K-Night-City-Photo3.jpg&ehk=bsevnwoHRhPi6O7b4VME44WdIxv7ATNNf0SjtkMbvNg%3d&risl=1&pid=ImgRaw&r=0" alt="About Us Image">
+                    <div class="about-content">
+                        <h2>About Us</h2>
+                        <p>Welcome to the official website of the Elementsian Government. Our mission is to provide transparent and efficient governance to ensure the prosperity and well-being of our citizens. Through our various departments, we strive to deliver high-quality services and uphold the values of justice, equality, and sustainability. Explore our website to learn more about our initiatives, services, and how we are working to build a better future for all Elementsians.</p>
+                        <a href="about.html" class="button">Learn More</a>
+                    </div>
+                </section>
 
-    window.addEventListener('load', () => {
-      const loader = document.querySelector('.loader');
-      loader.classList.add('hidden');
-    });
-    let scrollToTopBtn = document.getElementById("scrollToTopBtn");
-window.onscroll = function() {scrollFunction()};
+                <!-- Stay Up to Date Section -->
+                <section class="update-section">
+                    <div class="update-content">
+                        <h2>Stay Up to Date</h2>
+                        <p>Stay informed with the latest news and updates from the Elementsian Government. Subscribe to our newsletter, follow us on social media, and keep track of important events and announcements. We are committed to keeping our citizens informed and engaged with the latest developments and initiatives.</p>
+                        <p>By subscribing to our newsletter, you will receive regular updates on government projects, policy changes, and important community events. Our social media channels offer another way to stay connected and interact with us. Follow us for real-time updates, behind-the-scenes insights, and opportunities to engage with government representatives.</p>
+                        <p>Don't miss out on any important information. Whether it's a new public service, a major infrastructure project, or an emergency announcement, staying informed helps you stay prepared and engaged. Join our community of informed citizens today and be a part of shaping the future of Elementsia.</p>
+                        <a href="news.html" class="button">Subscribe</a>
+                    </div>
+                    <img src="https://www.morethanshipping.com/wp-content/uploads/2018/05/how-to-dock-a-container-ship-2018.jpg" alt="Stay Up to Date Image">
+                </section>
 
-function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    scrollToTopBtn.style.display = "block";
-  } else {
-    scrollToTopBtn.style.display = "none";
-  }
-}
+                <!-- Citizen Testimonials Section -->
+<!-- Citizen Testimonials Section -->
+<section class="testimonials-section">
+    <div class="testimonial-carousel">
+        <h2>Citizen Testimonials</h2>
+        <div class="testimonial-container active">
+            <p>"The services provided by the Elementsian Government have greatly improved my quality of life. The healthcare system is top-notch, and the public services are very efficient."</p>
+            <span class="author">- John Doe</span>
+        </div>
+        <div class="testimonial-container">
+            <p>"I am grateful for the transparent governance and the numerous opportunities provided by the government for education and personal growth. Thank you for all your hard work!"</p>
+            <span class="author">- Jane Smith</span>
+        </div>
+        <div class="testimonial-container">
+            <p>"The initiatives undertaken by the government have significantly improved our community. The new infrastructure projects have made a huge difference in our daily lives."</p>
+            <span class="author">- Mark Johnson</span>
+        </div>
+    </div>
+</section>
+<!-- Citizen Resources Section -->
+<section class="citizen-resources-section">
+    <h2>Citizen Resources</h2>
+    <div class="citizen-resources-container">
+        <div class="resource-item">
+            <i class="fas fa-file-alt"></i>
+            <h3>Forms & Documents</h3>
+            <p>Access important forms and documents required for various services.</p>
+            <a href="forms.html">Learn More</a>
+        </div>
+        <div class="resource-item">
+            <i class="fas fa-book"></i>
+            <h3>Guidelines</h3>
+            <p>Find guidelines for different processes and services offered by the government.</p>
+            <a href="guidelines.html">Learn More</a>
+        </div>
+        <div class="resource-item">
+            <i class="fas fa-life-ring"></i>
+            <h3>Support</h3>
+            <p>Get support and assistance for various issues and concerns.</p>
+            <a href="support.html">Learn More</a>
+        </div>
+    </div>
+</section>
 
-function topFunction() {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
-}
 
-  </script>
+            <footer class="site-footer">
+                <div class="footer-content">
+                    <img src="https://i.ibb.co/CBpzkT9/Elementsian-flag.png" alt="Flag" class="footer-flag">
+                    <p>&copy; 2024 Elementsian Government. All rights reserved.</p>
+                    <ul class="footer-links">
+                        <li><a href="terms.html"><i class="fas fa-file-alt"></i> Terms of Use</a></li>
+                        <li><a href="privacy.html"><i class="fas fa-user-shield"></i> Privacy Policy</a></li>
+                        <li><a href="accessibility.html"><i class="fas fa-universal-access"></i> Accessibility</a></li>
+                        <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const loader = document.getElementById('loader-container');
+            const content = document.getElementById('content');
 
-  <style>
-    .loader.hidden {
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.5s ease, visibility 0.5s ease;
-    }
-  </style>
+            setTimeout(() => {
+                loader.style.display = 'none';
+                content.style.display = 'block';
+            }, 2000); // Adjust this value for loader duration
+        });
+
+        let currentTestimonialIndex = 0;
+        const testimonials = document.querySelectorAll('.testimonial');
+
+        function showTestimonial(index) {
+            testimonials.forEach((testimonial, i) => {
+                testimonial.classList.remove('active');
+                if (i === index) {
+                    testimonial.classList.add('active');
+                }
+            });
+        }
+
+        function nextTestimonial() {
+            currentTestimonialIndex = (currentTestimonialIndex + 1) % testimonials.length;
+            showTestimonial(currentTestimonialIndex);
+        }
+
+        function prevTestimonial() {
+            currentTestimonialIndex = (currentTestimonialIndex - 1 + testimonials.length) % testimonials.length;
+            showTestimonial(currentTestimonialIndex);
+        }
+        
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const loader = document.getElementById('loader-container');
+            const content = document.getElementById('content');
+    
+            setTimeout(() => {
+                loader.style.display = 'none';
+                content.style.display = 'block';
+            }, 2000); // Adjust this value for loader duration
+    
+            let currentTestimonialIndex = 0;
+            const testimonials = document.querySelectorAll('.testimonial-container');
+    
+            function showTestimonial(index) {
+                testimonials.forEach((testimonial, i) => {
+                    testimonial.classList.remove('active');
+                    if (i === index) {
+                        testimonial.classList.add('active');
+                    }
+                });
+            }
+    
+            function nextTestimonial() {
+                currentTestimonialIndex = (currentTestimonialIndex + 1) % testimonials.length;
+                showTestimonial(currentTestimonialIndex);
+            }
+    
+            setInterval(nextTestimonial, 5000); // Change testimonial every 5 seconds
+        });
+    </script>
+    
 </body>
 </html>

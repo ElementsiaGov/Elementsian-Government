@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government Structure - Elementsian Government</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="loader.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .structure-section {
+            padding: 40px 20px;
+            background-color: #f9f9f9;
+        }
+
+        .structure-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .structure-content h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .structure-content p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .hierarchy-chart {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .hierarchy-chart img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .government-overview {
+            text-align: left;
+            margin-top: 40px;
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .government-overview h3 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .government-overview p {
+            margin-bottom: 20px;
+        }
+        .image {
+            border-radius: 15px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="loader-container">
+        <div class="custom-loader"></div>
+        <div class="loader-footer">
+            <img src="https://i.ibb.co/CBpzkT9/Elementsian-flag.png" alt="Flag" class="tiny-flag">
+            <p>&copy; 2024 Elementsian Government</p>
+        </div>
+    </div>
+    <div id="content" style="display: none;">
+        <div class="page-wrapper">
+            <div class="hero-image" style="background-image: url('https://i.ibb.co/8x9YLJF/ELEMENTSIA-2.png'); height: 470px; background-size: cover; background-position: center;"></div>
+            <nav class="navbar">
+                <div class="navbar-container">
+                    <div class="navbar-logo">
+                        <img src="https://i.ibb.co/CBpzkT9/Elementsian-flag.png" alt="Flag" class="flag-icon">
+                        <span class="navbar-title">Elementsian Government</span>
+                    </div>
+                    <ul class="navbar-menu" id="navbar-menu">
+                        <li class="navbar-item">
+                            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                        </li>
+                        <li class="navbar-item">
+                            <a href="#"><i class="fas fa-info-circle"></i> About</a>
+                            <div class="dropdown-menu">
+                                <a href="history.html"><i class="fas fa-history"></i> History</a>
+                                <a href="government-structure.html"><i class="fas fa-landmark"></i> Government Structure</a>
+                                <a href="manifesto.html"><i class="fas fa-bullseye"></i> Vision and Mission</a>
+                                <a href="key-figures.html"><i class="fas fa-user-tie"></i> Key Figures</a>
+                                <a href="achievements.html"><i class="fas fa-trophy"></i> Achievements</a>
+                                <a href="financial-overview.html"><i class="fas fa-chart-line"></i> Financial Overview</a>
+                            </div>
+                        </li>
+                        <li class="navbar-item">
+                            <a href="#"><i class="fas fa-concierge-bell"></i> Services</a>
+                            <div class="dropdown-menu">
+                                <a href="public-services.html"><i class="fas fa-people-carry"></i> Public Services</a>
+                                <a href="online-services.html"><i class="fas fa-laptop"></i> Online Services</a>
+                                <a href="emergency-services.html"><i class="fas fa-ambulance"></i> Emergency Services</a>
+                                <a href="health-services.html"><i class="fas fa-hospital"></i> Health Services</a>
+                                <a href="education-services.html"><i class="fas fa-chalkboard-teacher"></i> Education Services</a>
+                            </div>
+                        </li>
+                        <li class="navbar-item">
+                            <a href="#"><i class="fas fa-phone"></i> Contact</a>
+                            <div class="dropdown-menu">
+                                <a href="contact-information.html"><i class="fas fa-address-book"></i> Contact Information</a>
+                                <a href="feedback-form.html"><i class="fas fa-comment-dots"></i> Feedback Form</a>
+                                <a href="office-locations.html"><i class="fas fa-map-marker-alt"></i> Office Locations</a>
+                                <a href="faq.html"><i class="fas fa-question-circle"></i> Frequently Asked Questions</a>
+                            </div>
+                        </li>
+                        <li class="navbar-item">
+                            <a href="vote.html"><i class="fas fa-vote-yea"></i> Am I Eligible to Vote?</a>
+                            <div class="dropdown-menu">
+                                <a href="eligibility-requirements.html"><i class="fas fa-check-circle"></i> Eligibility Requirements</a>
+                                <a href="how-to-register.html"><i class="fas fa-pen"></i> How to Register</a>
+                                <a href="voting-locations.html"><i class="fas fa-map"></i> Voting Locations</a>
+                                <a href="important-dates.html"><i class="fas fa-calendar-alt"></i> Important Dates</a>
+                                <a href="vote-faq.html"><i class="fas fa-question"></i> FAQ</a>
+                            </div>
+                        </li>
+                        <li class="navbar-item departments">
+                            <a href="#"><i class="fas fa-building"></i> Departments</a>
+                            <div class="dropdown-menu">
+                                <a href="education-department.html"><i class="fas fa-school"></i> Education</a>
+                                <a href="science-technology-department.html"><i class="fas fa-flask"></i> Science and Technology</a>
+                                <a href="natural-resources-department.html"><i class="fas fa-tree"></i> Natural Resources</a>
+                                <a href="public-communications-department.html"><i class="fas fa-bullhorn"></i> Public Communications</a>
+                                <a href="emergency-services-department.html"><i class="fas fa-life-ring"></i> Emergency Services</a>
+                                <a href="health-department.html"><i class="fas fa-heartbeat"></i> Health</a>
+                                <a href="administration-department.html"><i class="fas fa-cogs"></i> Administration</a>
+                                <a href="environmental-affairs-department.html"><i class="fas fa-leaf"></i> Environmental Affairs</a>
+                                <a href="transportation-department.html"><i class="fas fa-bus"></i> Transportation</a>
+                                <a href="justice-department.html"><i class="fas fa-gavel"></i> Justice</a>
+                                <a href="energy-department.html"><i class="fas fa-bolt"></i> Energy</a>
+                                <a href="agriculture-department.html"><i class="fas fa-tractor"></i> Agriculture</a>
+                                <a href="space-exploration-department.html"><i class="fas fa-rocket"></i> Space Administration and Exploration</a>
+                                <a href="housing-urban-development-department.html"><i class="fas fa-home"></i> Housing and Urban Development</a>
+                                <a href="defense-department.html"><i class="fas fa-shield-alt"></i> Defense</a>
+                                <a href="commerce-department.html"><i class="fas fa-store"></i> Commerce</a>
+                                <a href="international-aid-department.html"><i class="fas fa-hands-helping"></i> International Aid</a>
+                                <a href="cultural-affairs-department.html"><i class="fas fa-theater-masks"></i> Cultural Affairs</a>
+                                <a href="international-relations-department.html"><i class="fas fa-globe"></i> International Relations</a>
+                                <a href="additional-projects.html"><i class="fas fa-project-diagram"></i> Additional Projects</a>
+                                <a href="reserve-fund.html"><i class="fas fa-piggy-bank"></i> Reserve Fund</a>
+                                <a href="trade-department.html"><i class="fas fa-handshake"></i> Trade</a>
+                                <a href="social-services-department.html"><i class="fas fa-users"></i> Social Services</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            
+
+            <div class="main-content">
+                <!-- Government Structure Section -->
+                <section class="structure-section">
+                    <div class="structure-content">
+                        <h2>Government Structure</h2>
+                        <p>The Elementsian Government operates under a constitutional parliamentary monarchy, comprising various departments and officials dedicated to serving the public. The structure ensures effective governance, transparency, and the provision of essential services to all citizens.</p>
+                        <div class="hierarchy-chart">
+                            <img class="image" src="https://th.bing.com/th/id/R.72d67381f584d9ad846bf095ce6bdb4e?rik=rLuQmvMFWfEO4A&riu=http%3a%2f%2fupload.wikimedia.org%2fwikipedia%2fcommons%2fa%2fa0%2fVictoria_Parliament_House_Melbourne.jpg&ehk=Ab6SHKG8UCa2M3iM3Vsr%2biJh8tV89d6TAI77Io81tSI%3d&risl=&pid=ImgRaw&r=0" alt="Hierarchy Chart">
+                        </div>
+                        <div class="government-overview">
+                            <h3><i class="fas fa-history"></i> Historical Background</h3>
+                            <p>The Elementsian Government has a rich history that dates back several centuries. Initially established as a monarchy, the government has continuously evolved to meet the needs of its citizens and adapt to the changing global landscape. The transformation from an absolute monarchy to a constitutional parliamentary monarchy was marked by significant reforms, including the pivotal constitutional amendments of 1923, 1950, and 1987.</p>
+                            <p>In 1923, the Elementsian Government held its first parliamentary elections, allowing citizens to elect representatives to the newly formed House of Commons. This was a landmark moment in the history of Elementsia, as it marked the beginning of democratic governance. Subsequent reforms in 1950 expanded the rights of citizens and enhanced the transparency and accountability of the government. The 1987 reforms further solidified the balance of power between the monarchy and the parliament, ensuring a more robust and democratic system of governance.</p>
+                        
+                            <h3><i class="fas fa-gavel"></i> Legislative Process</h3>
+                            <p>The legislative process in Elementsia is designed to be thorough, transparent, and inclusive. The process begins with the drafting of a bill by members of Parliament (MPs), government officials, or through public initiatives. Once a bill is drafted, it is introduced to the House of Commons, where it undergoes several readings and debates.</p>
+                            <p>During the first reading, the bill is presented, and its primary objectives are outlined. This is followed by the second reading, where MPs debate the general principles and merits of the bill. The bill is then sent to a specialized committee for detailed examination, amendments, and expert consultations. After the committee stage, the bill returns to the House of Commons for the third reading and final debate.</p>
+                            <p>If the House of Commons approves the bill, it is sent to the House of Lords for further scrutiny. The House of Lords reviews the bill, suggests additional amendments, and debates its implications. Once both houses agree on the final version of the bill, it is sent to the monarch for royal assent. Upon receiving royal assent, the bill becomes law, and its provisions are implemented by the relevant government departments.</p>
+                        
+                            <h3><i class="fas fa-crown"></i> Executive Branch</h3>
+                            <p>The executive branch of Elementsia is responsible for implementing and enforcing laws, managing national resources, and overseeing the day-to-day operations of the government. It is headed by the Prime Minister, who is appointed by the parliament. The Prime Minister leads the Cabinet, which consists of ministers who head various government departments and are accountable to Parliament.</p>
+                            <p>The Cabinet plays a crucial role in shaping public policy, making decisions on national and international issues, and ensuring the effective administration of government programs and services. Cabinet meetings are held regularly to discuss and decide on important matters affecting the country. These meetings are chaired by the Prime Minister, and minutes are recorded to maintain transparency and accountability.</p>
+                            <p>The executive branch also includes various administrative agencies and public services that work to implement government policies and provide essential services to citizens. These agencies operate under the guidance of their respective ministers and are responsible for areas such as health, education, defense, and public safety.</p>
+                        
+                            <h3><i class="fas fa-balance-scale"></i> Judicial Branch</h3>
+                            <p>The judicial branch of Elementsia is independent of the executive and legislative branches, ensuring a system of checks and balances. It is responsible for interpreting and applying the law, protecting individual rights, and ensuring justice is administered fairly. The judiciary comprises various levels of courts, including lower courts, appellate courts, and the Supreme Court, which is the highest authority in the judicial system.</p>
+                            <p>Judges in Elementsia are appointed based on merit, experience, and their commitment to upholding the rule of law. They are expected to perform their duties without bias or influence from other branches of government. The judicial process involves hearing cases, reviewing evidence, and making rulings based on legal principles and precedents.</p>
+                            <p>The judiciary also plays a vital role in reviewing the constitutionality of laws and government actions. If a law or action is found to be in violation of the constitution, the judiciary has the authority to nullify it, ensuring that the fundamental rights and freedoms of citizens are protected.</p>
+                        
+                            <h3><i class="fas fa-university"></i> Parliamentary System</h3>
+                            <p>Elementsia's Parliament is a bicameral legislature, consisting of two houses: the House of Commons and the House of Lords. The House of Commons is composed of Members of Parliament (MPs) who are elected by the citizens in general elections. The House of Commons is the primary legislative body, where most bills are introduced, debated, and voted upon.</p>
+                            <p>The House of Lords, on the other hand, includes appointed members such as life peers, bishops, and hereditary peers. The House of Lords acts as a revising chamber, providing additional scrutiny, expertise, and perspectives on proposed legislation. It reviews bills passed by the House of Commons, suggests amendments, and ensures that laws are thoroughly examined before becoming law.</p>
+                            <p>Parliament is responsible for making and amending laws, scrutinizing the actions of the executive branch, and representing the interests of the people. Parliamentary committees play a crucial role in this process, conducting detailed reviews, holding inquiries, and gathering evidence from experts and the public.</p>
+                        
+                            <h3><i class="fas fa-city"></i> Local Government</h3>
+                            <p>Local government in Elementsia operates at the municipal and regional levels, providing services and administration closer to the citizens. Local councils are elected by residents and have the authority to make decisions on local matters such as education, transportation, housing, and public safety. Local governments are essential in delivering public services, maintaining infrastructure, and fostering community development.</p>
+                            <p>Municipal councils are responsible for urban areas, managing city services such as waste collection, public transportation, and local law enforcement. Regional councils cover larger geographic areas, which may include multiple municipalities, and are responsible for broader services such as regional planning, economic development, and environmental protection.</p>
+                            <p>Local governments are funded through a combination of local taxes, government grants, and other revenue sources. They work closely with the central government to ensure that national policies are implemented effectively at the local level and that the unique needs of each community are addressed.</p>
+                        </div>
+                        
+                    </div>
+                </section>
+            </div>
+
+            <footer class="site-footer">
+                <div class="footer-content">
+                    <img src="https://i.ibb.co/CBpzkT9/Elementsian-flag.png" alt="Flag" class="footer-flag">
+                    <p>&copy; 2024 Elementsian Government. All rights reserved.</p>
+                    <ul class="footer-links">
+                        <li><a href="terms.html"><i class="fas fa-file-alt"></i> Terms of Use</a></li>
+                        <li><a href="privacy.html"><i class="fas fa-user-shield"></i> Privacy Policy</a></li>
+                        <li><a href="accessibility.html"><i class="fas fa-universal-access"></i> Accessibility</a></li>
+                        <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const loader = document.getElementById('loader-container');
+            const content = document.getElementById('content');
+
+            setTimeout(() => {
+                loader.style.display = 'none';
+                content.style.display = 'block';
+            }, 2000); // Adjust this value for loader duration
+        });
+    </script>
+</body>
+</html>
