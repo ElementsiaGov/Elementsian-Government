@@ -17,6 +17,7 @@
             align-items: center;
             height: 100vh;
             text-align: center;
+            flex-direction: column;
         }
 
         .loader-footer {
@@ -41,6 +42,15 @@
             display: none;
         }
 
+        .maintenance-message .container {
+            margin: 0 20px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 360px;
+        }
+
         .maintenance-message h1 {
             font-size: 2em;
             color: #2c3e50;
@@ -49,6 +59,32 @@
         .maintenance-message p {
             font-size: 1.2em;
             color: #555;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: white;
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            border: #666 solid 2px;
+            border-radius: 25px;
+            transition: 0.3s ease-in-out;
+        }
+
+        .button:hover {
+            background-color: #4072a3;
+            border: 2px solid #4072a3;
+            padding: 10px 20px;
+            color: white;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            text-align: center;
+            width: 100%;
         }
     </style>
 </head>
@@ -62,9 +98,16 @@
     </div>
     <div id="content" style="display: none;">
         <div class="maintenance-message">
-            <h1>Maintenance Notice</h1>
-            <p>We are currently performing maintenance on the mobile version of our site. Please check back later or visit us on a desktop device.</p>
+            <div class="container">
+                <h1>Maintenance Notice</h1>
+                <p>We are currently performing maintenance on the mobile version of our site. Please check back later or visit us on a desktop device.</p>
+                <a href="main.html" class="button">Exit</a>
+            </div>
         </div>
+    </div>
+    <div class="footer">
+        <img src="https://i.ibb.co/CBpzkT9/Elementsian-flag.png" alt="Flag" class="tiny-flag">
+        <p>&copy; 2024 Elementsian Government</p>
     </div>
 
     <script>
